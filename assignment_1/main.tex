@@ -251,8 +251,7 @@ sudo pip install cffi pysoundfile
 \label{prob:input}
 Download the sound file from  
 \begin{lstlisting}
-wget https://raw.githubusercontent.com/gadepall/ 
-EE1310/master/filter/codes/Sound_Noise.wav
+wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/assignment_1/ques_2/Sound_Noise.wav
 \end{lstlisting}
 %\href{http://tlc.iith.ac.in/img/sound/Sound_Noise.wav}{\url{http://tlc.iith.ac.in/img/sound/Sound_Noise.wav}}  
 %in the link given below.
@@ -286,7 +285,7 @@ Write the python code for removal of out of band noise and execute the code.
 %\end{figure}
 %\input{block_enc}
 \item
-The output of the python script in Problem \ref{prob:output} is the audio file Sound\_With\_ReducedNoise.wav. Play the file in the spectrogram in Problem \ref{prob:spectrogram}. What do you observe?
+The output of the python script in Problem \ref{prob:output} is the audio file Sound\_Without\_Noise.wav. Play the file in the spectrogram in Problem \ref{prob:spectrogram}. What do you observe?
 \\
 \solution The key strokes as well as background noise is subdued in the audio.  Also,  the signal is blank for frequencies above 5.1 kHz.
 
@@ -298,6 +297,18 @@ The output of the python script in Problem \ref{prob:output} is the audio file S
 x(n) = \cbrak{\underset{\uparrow}{1},2,3,4,2,1}
 \end{equation}
 Sketch $x(n)$.
+
+\solution 
+\begin{lstlisting}
+wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/assignment_1/ques_3/3.1_2.py
+\end{lstlisting}
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=\columnwidth]{./ques_3/x_n.png}
+	\end{center}
+	\captionof{figure}{$x(n)$ wrt n}
+	\label{fig:xnyn}	
+\end{figure}
 \item Let
 \begin{multline}
 \label{eq:iir_filter}
@@ -309,15 +320,15 @@ Sketch $y(n)$.
 \\
 \solution The following code yields Fig. \ref{fig:xnyn}.
 \begin{lstlisting}
-wget https://github.com/gadepall/EE1310/raw/master/filter/codes/xnyn.py
+wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/assignment_1/ques_3/3.1_2.py
 \end{lstlisting}
-%\begin{figure}[!ht]
-%\begin{center}
-%\includegraphics[width=\columnwidth]{./figs/xnyn}
-%\end{center}
-%\captionof{figure}{}
-%\label{fig:xnyn}	
-%\end{figure}
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\columnwidth]{./ques_3/y_n.png}
+\end{center}
+\captionof{figure}{y(n) wrt n}
+\label{fig:xnyn}	
+\end{figure}
 
 \end{enumerate}
 \section{$Z$-transform}
@@ -338,13 +349,23 @@ and find
 \begin{equation}
 	{\mathcal {Z}}\{x(n-k)\} 
 \end{equation}
-\solution From \eqref{eq:z_trans},
+\solution From \eqref{eq:z_trans}
 \begin{align}
-{\mathcal {Z}}\{x(n-k)\} &=\sum _{n=-\infty }^{\infty }x(n-1)z^{-n}
-\\
-&=\sum _{n=-\infty }^{\infty }x(n)z^{-n-1} = z^{-1}\sum _{n=-\infty }^{\infty }x(n)z^{-n}
+	{\mathcal {Z}}\{x(n-1)\}=\sum_{n=-\infty}^\infty x(n-1)z^{-n}
 \end{align}
-resulting in \eqref{eq:shift1}. Similarly, it can be shown that
+Let $m=n-1$.Then
+\begin{align}
+	{\mathcal {Z}}\{x(n-1)\}&=\sum_{m+1=-\infty}^\infty x(m)z^{-m-1}\\
+	&=z^{-1}\sum_{m=-\infty}^\infty x(m)z^{-m}\\
+	&=z^{-1}X(z)
+\end{align}
+%\solution From \eqref{eq:z_trans},
+%\begin{align}
+%{\mathcal {Z}}\{x(n-k)\} &=\sum _{n=-\infty }^{\infty }x(n-1)z^{-n}
+%\\
+%&=\sum _{n=-\infty }^{\infty }x(n)z^{-n-1} = z^{-1}\sum _{n=-\infty }^{\infty }x(n)z^{-n}
+%\end{align}
+Similarly, it can be shown that
 %
 \begin{equation}
 \label{eq:z_trans_shift}
@@ -358,7 +379,13 @@ H(z) = \frac{Y(z)}{X(z)}
 \end{equation}
 %
 from  \eqref{eq:iir_filter} assuming that the $Z$-transform is a linear operation.
-\\
+
+%\solution Applying $Z$-transform to \eqref{eq:iir_filter}
+%\begin{align}
+%	y(n) + \frac{1}{2}y(n-1) = x(n) + x(n-2)
+%\end{align}
+
+	
 \solution  Applying \eqref{eq:z_trans_shift} in \eqref{eq:iir_filter},
 \begin{align}
 Y(z) + \frac{1}{2}z^{-1}Y(z) &= X(z)+z^{-2}X(z)
@@ -409,7 +436,13 @@ using the fomula for the sum of an infinite geometric progression.
 \label{eq:anun}
 a^nu(n) \ztrans \frac{1}{1-az^{-1}} \quad \abs{z} > \abs{a}
 \end{equation}
-%
+
+\solution $Z$-transform is given by
+\begin{align}
+	\mathcal{Z}\{a^nu(n)\}&=\sum_{n=-\infty}^\infty a^nu(n)z^{-n}\\
+	&=\sum_{n=0}^\infty (az^{-1})^{n}\\
+	&=\frac{1}{1-az^{-1}}
+\end{align}
 \item 
 Let
 \begin{equation}
@@ -420,14 +453,14 @@ known as the {\em Discret Time Fourier Transform} (DTFT) of $x(n)$.
 \\
 \solution The following code plots Fig. \ref{fig:dtft}.
 \begin{lstlisting}
-wget https://raw.githubusercontent.com/gadepall/EE1310/master/filter/codes/dtft.py
+wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/assignment_1/ques_4/4.5.py
 \end{lstlisting}
-%\begin{figure}[!ht]
-%\centering
-%\includegraphics[width=\columnwidth]{./figs/dtft}
-%\caption{$\abs{H\brak{e^{\j\omega}}}$}
-%\label{fig:dtft}
-%\end{figure}
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\columnwidth]{./ques_4/H_w}
+\caption{Discret Time Fourier Transform}
+\label{fig:dtft}
+\end{figure}
 \end{enumerate}
 
 \section{Impulse Response}
