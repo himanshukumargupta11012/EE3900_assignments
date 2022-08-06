@@ -16,7 +16,7 @@ for i in range(20):
         Y[i]=-1/2*Y[i-1]+X[i-2]
     if 8<=i<20:
         Y[i]=-1/2*Y[i-1]
-
+print(Y)
 plt.stem(range(6),X)
 
 plt.grid()
