@@ -393,7 +393,7 @@ Y(z) + \frac{1}{2}z^{-1}Y(z) &= X(z)+z^{-2}X(z)
 \implies \frac{Y(z)}{X(z)} &= \frac{1 + z^{-2}}{1 + \frac{1}{2}z^{-1}}
 \label{eq:freq_resp}
 \end{align}
-%
+%gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg
 \item Find the Z transform of 
 \begin{equation}
 \delta(n)
@@ -419,10 +419,15 @@ is
 \begin{equation}
 U(z) = \frac{1}{1-z^{-1}}, \quad \abs{z} > 1
 \end{equation}
-\solution It is easy to show that
-\begin{equation}
-\delta(n) \ztrans 1
-\end{equation}
+%\solution It is easy to show that
+%\begin{equation}
+%\delta(n) \ztrans 1
+%\end{equation}
+\solution $Z$-transform of $\delta(n)$ is given by
+\begin{align}
+	\mathcal{Z}\{\delta(n)\}&=\sum _{n= -\infty}^{\infty}\delta(n)z^{-n}\\
+	&=1
+\end{align} 
 and from \eqref{eq:unit_step},
 \begin{align}
 U(z) &= \sum _{n= 0}^{\infty}z^{-n}
@@ -441,7 +446,7 @@ a^nu(n) \ztrans \frac{1}{1-az^{-1}} \quad \abs{z} > \abs{a}
 \begin{align}
 	\mathcal{Z}\{a^nu(n)\}&=\sum_{n=-\infty}^\infty a^nu(n)z^{-n}\\
 	&=\sum_{n=0}^\infty (az^{-1})^{n}\\
-	&=\frac{1}{1-az^{-1}}
+	&=\frac{1}{1-az^{-1}},\quad \abs{z} > \abs{a}
 \end{align}
 \item 
 Let
@@ -451,7 +456,9 @@ H\brak{e^{\j \omega}} = H\brak{z = e^{\j \omega}}.
 Plot $\abs{H\brak{e^{\j \omega}}}$.  Comment.  $H(e^{\j \omega})$ is
 known as the {\em Discret Time Fourier Transform} (DTFT) of $x(n)$.
 \\
-\solution The following code plots Fig. \ref{fig:dtft}.
+\solution $\abs{H\brak{e^{\j \omega}}}$ is periodic with period 6.25
+
+The following code plots Fig. \ref{fig:dtft}.
 \begin{lstlisting}
 wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/assignment_1/ques_4/4.5.py
 \end{lstlisting}
@@ -484,23 +491,45 @@ H(z) &= \frac{1}{1 + \frac{1}{2}z^{-1}} + \frac{ z^{-2}}{1 + \frac{1}{2}z^{-1}}
 using \eqref{eq:anun} and \eqref{eq:z_trans_shift}.
 \item Sketch $h(n)$. Is it bounded? Convergent? 
 \\
-\solution The following code plots Fig. \ref{fig:hn}.
+\solution The following code plots Fig. \ref{fig:h_n}.
+
 \begin{lstlisting}
-wget https://raw.githubusercontent.com/gadepall/EE1310/master/filter/codes/hn.py
+wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/assignment_1/ques_5/5.2.py
 \end{lstlisting}
-%\begin{figure}[!ht]
-%\centering
-%\includegraphics[width=\columnwidth]{./figs/hn}
-%\caption{$h(n)$ as the inverse of $H(z)$}
-%\label{fig:hn}
-%\end{figure}
+on simplfying we get h(n) as
+\begin{align}
+	\begin{cases}
+		\label{eq:h_n_def}
+		5\times \brak{-\frac{1}{2}}^n  & n\geq 2\\
+		\brak{-\frac{1}{2}}^n  &2>n\geq0\\
+		0 &n<0
+	\end{cases}
+\end{align}
+\begin{align}
+	\because 5\times \brak{-\frac{1}{2}}^n \to 0 \quad	\text{for} \quad n\to \infty 
+\end{align}
+So, we can conclude that h(n) is bounded and convergent
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\columnwidth]{./ques_5/h_n}
+\caption{$h(n)$ wrt n}
+\label{fig:h_n}
+\end{figure}
 %
 \item The system with $h(n)$ is defined to be stable if
 \begin{equation}
 \sum_{n=-\infty}^{\infty}h(n) < \infty
 \end{equation}
 Is the system defined by \eqref{eq:iir_filter} stable for the impulse response in \eqref{eq:impulse_resp}?
-%
+
+\solution For system of 3.2 ,$h(n)$ is defined in \eqref{eq:h_n_def} 
+So,
+\begin{align}
+	\sum_{n=-\infty}^{\infty}h(n)&=\sum_{n=2}^{\infty}5\times \brak{-\frac{1}{2}}^n+\sum_{n=0}^{1} \brak{-\frac{1}{2}}^n+\sum_{n=-\infty}^{-1}0\\
+	&=5\times \frac{1}{6}+\frac{1}{2}\\
+	&=\frac{4}{3}
+\end{align}
+Since the sum is finite so the system is stable for impulsive response
 \item 
 Compute and sketch $h(n)$ using 
 \begin{equation}
@@ -510,24 +539,24 @@ h(n) + \frac{1}{2}h(n-1) = \delta(n) + \delta(n-2),
 %
 This is the definition of $h(n)$.
 \\
-\solution The following code plots Fig. \ref{fig:hndef}. Note that this is the same as Fig. 
+\solution The following code plots Fig. \ref{fig:h_n}. Note that this is the same as Fig. 
 \ref{fig:hn}. 
 %
 \begin{lstlisting}
-wget https://raw.githubusercontent.com/gadepall/EE1310/master/filter/codes/hndef.py
+wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/assignment_1/ques_5/5.4.py
 \end{lstlisting}
-%\begin{figure}[!ht]
-%\centering
-%\includegraphics[width=\columnwidth]{./figs/hndef}
-%\caption{$h(n)$ from the definition}
-%\label{fig:hndef}
-%\end{figure}
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\columnwidth]{./ques_5/h_delta}
+\caption{$h(n)$ from the definition}
+\label{fig:h_n}
+\end{figure}
 %
 \item Compute 
 %
 \begin{equation}
 \label{eq:convolution}
-y(n) = x(n)*h(n) = \sum_{n=-\infty}^{\infty}x(k)h(n-k)
+y(n) = x(n)*h(n) = \sum_{k=-\infty}^{\infty}x(k)h(n-k)
 \end{equation}
 %
 Comment. The operation in \eqref{eq:convolution} is known as
@@ -539,7 +568,7 @@ $y(n)$ in  Fig.
 \ref{fig:xnyn}. 
 %
 \begin{lstlisting}
-wget https://raw.githubusercontent.com/gadepall/EE1310/master/filter/codes/ynconv.py
+wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/assignment_1/ques_5/5.5.py
 \end{lstlisting}
 %\begin{figure}[!ht]
 %\centering
@@ -550,8 +579,19 @@ wget https://raw.githubusercontent.com/gadepall/EE1310/master/filter/codes/yncon
 
 \item Show that
 \begin{equation}
-y(n) =  \sum_{n=-\infty}^{\infty}x(n-k)h(k)
+y(n) =  \sum_{k=-\infty}^{\infty}x(n-k)h(k)
 \end{equation}
+
+\solution From \eqref{eq:convolution}
+\begin{align}
+	y(n) = \sum_{k=-\infty}^{\infty}x(k)h(n-k)
+\end{align}
+Replacing n-k with l,we get
+\begin{align}
+	y(n) &= \sum_{n-l=-\infty}^{\infty}x(n-l)h(l)\\
+	&=\sum_{-l=-\infty}^{\infty}x(n-l)h(l)\\
+		&=\sum_{l=-\infty}^{\infty}x(n-l)h(l)
+\end{align}
 \end{enumerate}
 
 %
