@@ -298,7 +298,7 @@ x(n) = \cbrak{\underset{\uparrow}{1},2,3,4,2,1}
 \end{equation}
 Sketch $x(n)$.
 
-\solution 
+\solution The following code yields Fig. \ref{fig:x_n}.
 \begin{lstlisting}
 wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/assignment_1/ques_3/3.1_2.py
 \end{lstlisting}
@@ -307,7 +307,7 @@ wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/a
 		\includegraphics[width=\columnwidth]{./ques_3/x_n.png}
 	\end{center}
 	\captionof{figure}{$x(n)$ wrt n}
-	\label{fig:xnyn}	
+	\label{fig:x_n}	
 \end{figure}
 \item Let
 \begin{multline}
@@ -318,7 +318,7 @@ y(n) + \frac{1}{2}y(n-1) = x(n) + x(n-2),
 \end{multline}
 Sketch $y(n)$.
 \\
-\solution The following code yields Fig. \ref{fig:xnyn}.
+\solution The following code yields Fig. \ref{fig:y_n}.
 \begin{lstlisting}
 wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/assignment_1/ques_3/3.1_2.py
 \end{lstlisting}
@@ -327,9 +327,14 @@ wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/a
 \includegraphics[width=\columnwidth]{./ques_3/y_n.png}
 \end{center}
 \captionof{figure}{y(n) wrt n}
-\label{fig:xnyn}	
+\label{fig:y_n}	
 \end{figure}
+\item Repeat the above exercise using a C code.
 
+\solution Download and run the following code 
+\begin{lstlisting}
+wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/assignment_1/ques_3/3.3.c
+\end{lstlisting}
 \end{enumerate}
 \section{$Z$-transform}
 \begin{enumerate}[label=\thesection.\arabic*]
@@ -513,7 +518,7 @@ So, we can conclude that h(n) is bounded and convergent
 \centering
 \includegraphics[width=\columnwidth]{./ques_5/h_n}
 \caption{$h(n)$ wrt n}
-\label{fig:h_n}
+\label{fig:h_n_u}
 \end{figure}
 %
 \item The system with $h(n)$ is defined to be stable if
@@ -539,8 +544,8 @@ h(n) + \frac{1}{2}h(n-1) = \delta(n) + \delta(n-2),
 %
 This is the definition of $h(n)$.
 \\
-\solution The following code plots Fig. \ref{fig:h_n}. Note that this is the same as Fig. 
-\ref{fig:hn}. 
+\solution The following code plots Fig. \ref{fig:h_n_delta}. Note that this is the same as Fig. 
+\ref{fig:h_n_u}. 
 %
 \begin{lstlisting}
 wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/assignment_1/ques_5/5.4.py
@@ -549,7 +554,7 @@ wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/a
 \centering
 \includegraphics[width=\columnwidth]{./ques_5/h_delta}
 \caption{$h(n)$ from the definition}
-\label{fig:h_n}
+\label{fig:h_n_delta}
 \end{figure}
 %
 \item Compute 
@@ -563,19 +568,19 @@ Comment. The operation in \eqref{eq:convolution} is known as
 {\em convolution}.
 %
 \\
-\solution The following code plots Fig. \ref{fig:ynconv}. Note that this is the same as 
+\solution The following code plots Fig. \ref{fig:y_n_conv}. Note that this is the same as 
 $y(n)$ in  Fig. 
-\ref{fig:xnyn}. 
+\ref{fig:y_n}. 
 %
 \begin{lstlisting}
 wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/assignment_1/ques_5/5.5.py
 \end{lstlisting}
-%\begin{figure}[!ht]
-%\centering
-%\includegraphics[width=\columnwidth]{./figs/ynconv}
-%\caption{$y(n)$ from the definition of convolution}
-%\label{fig:ynconv}
-%\end{figure}
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\columnwidth]{./ques_5/y_n_convo}
+\caption{$y(n)$ from the definition of convolution}
+\label{fig:y_n_convo}
+\end{figure}
 
 \item Show that
 \begin{equation}
