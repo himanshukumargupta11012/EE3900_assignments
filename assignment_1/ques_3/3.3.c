@@ -22,6 +22,10 @@ int x(int n){
 
 int main(){
 
+    FILE*file=fopen("y__n.dat","w");
+    for(int i=0;i<10;i++){
+        fprintf(file,"%lf\n",y(i));
+    }
     // float y[10];
     // y[0]=x[0]
     // y[1]=-1/2*y[0]+x[1]

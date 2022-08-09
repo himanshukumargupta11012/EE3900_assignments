@@ -23,6 +23,7 @@ plt.grid()
 plt.ylabel("x(n)")
 plt.xlabel("n")
 plt.show()
+
 plt.stem(range(-5,20),np.concatenate((np.zeros(5),Y)))
 plt.grid()
 plt.ylabel("y(n)")
