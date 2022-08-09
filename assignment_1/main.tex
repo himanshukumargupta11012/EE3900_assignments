@@ -214,7 +214,9 @@ Digital Signal Processing
 % Remember, if you use this you must call \IEEEpubidadjcol in the second
 % column for its text to clear the IEEEpubid mark.
 
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
 
+\let\vec\mathbf
 
 % make the title area
 \maketitle
@@ -474,7 +476,7 @@ known as the {\em Discret Time Fourier Transform} (DTFT) of $x(n)$.
 	&=2\frac{2\cos^2(\omega)-2j\sin(\omega)\cos(\omega)}{2+\cos(\omega)-j\sin(\omega)}\\
 	&=4\cos(\omega)\frac{\cos(\omega)-j\sin(\omega)}{2+\cos(\omega)-j\sin(\omega)}
 \end{align}
-Now,$|H(e^{jw})|$ is
+So,
 \begin{align}
 	|H(e^{jw})|=\frac{4\cos(\omega)}{5+4\cos(\omega)}
 \end{align}
@@ -589,10 +591,25 @@ $y(n)$ in  Fig.
 
 We will find the convolution using topleitz matrix.
 For that we have to find topleitz matrix of h(n).
+
+h(n) is tending to 0 for large n.
+So,we take upto some n only.
 So,
-%\begin{align}
-%	
-%\end{align}
+\begin{align}
+	h(n)=\myvec{1\\-.5\\.\\.} \quad for \quad n=0,2 ...9
+\end{align} 
+So,topleitz matrix of $h(n)$ will be
+\begin{align}
+	top\{h(n)\}=\myvec{1& 0& 0 &0 &0 &0\\-.5 &1 &0 &0 &0 &0\\1.25&-.5&1&0&0&0\\. &.& .& .& .&. }
+\end{align}
+and 
+\begin{align}
+	x(n)=\myvec{1\\2\\3\\4\\2\\1}
+\end{align}
+So,
+\begin{align}
+	top\{h(n)\}*x(n)=\myvec{1\\1.5\\3.25\\.\\.}
+\end{align}
 \begin{lstlisting}
 wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/assignment_1/ques_5/5.5.py
 \end{lstlisting}
