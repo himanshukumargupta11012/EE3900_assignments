@@ -509,7 +509,15 @@ wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/a
 
 \section{Impulse Response}
 \begin{enumerate}[label=\thesection.\arabic*]
+	\item Using long division, 
+	find
+	\begin{align}
+		h(n), \quad n < 5
+	\end{align}
+	for H(z) in 
+	\eqref{eq:freq_resp}.
 \item \label{prob:impulse_resp}
+
 Find an expression for $h(n)$ using $H(z)$, given that 
 %in Problem \ref{eq:ztransab} and \eqref{eq:anun}, given that
 \begin{equation}
@@ -526,9 +534,10 @@ H(z) &= \frac{1}{1 + \frac{1}{2}z^{-1}} + \frac{ z^{-2}}{1 + \frac{1}{2}z^{-1}}
 \implies h(n) &= \brak{-\frac{1}{2}}^{n}u(n) + \brak{-\frac{1}{2}}^{n-2}u(n-2)
 \end{align}
 using \eqref{eq:anun} and \eqref{eq:z_trans_shift}.
-\item Sketch $h(n)$. Is it bounded? Convergent? 
+\item Sketch $h(n)$. Is it bounded? Justify theoreti-
+cally.
 \\
-\solution The following code plots Fig. \ref{fig:h_n}.
+\solution The following code plots Fig. \ref{fig:h_n_u}.
 
 \begin{lstlisting}
 wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/assignment_1/ques_5/5.2.py
@@ -545,7 +554,7 @@ on simplfying we get h(n) as
 \begin{align}
 	\because 5\times \brak{-\frac{1}{2}}^n \to 0 \quad	\text{for} \quad n\to \infty 
 \end{align}
-So, we can conclude that h(n) is bounded and convergent
+So, we can conclude that h(n) is bounded.
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=\columnwidth]{./ques_5/h_n}
@@ -553,6 +562,7 @@ So, we can conclude that h(n) is bounded and convergent
 \label{fig:h_n_u}
 \end{figure}
 %
+\item Convergent? Justify using the ratio test.
 \item The system with $h(n)$ is defined to be stable if
 \begin{equation}
 \sum_{n=-\infty}^{\infty}h(n) < \infty
@@ -567,6 +577,7 @@ So,
 	&=\frac{4}{3}
 \end{align}
 Since the sum is finite so the system is stable for impulsive response
+\item Verify the above result using a python code.
 \item 
 Compute and sketch $h(n)$ using 
 \begin{equation}
@@ -604,8 +615,22 @@ Comment. The operation in \eqref{eq:convolution} is known as
 $y(n)$ in  Fig. 
 \ref{fig:y_n}. 
 
-We will find the convolution using topleitz matrix.
-For that we have to find topleitz matrix of h(n).
+
+\begin{lstlisting}
+wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/assignment_1/ques_5/5.5.py
+\end{lstlisting}
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\columnwidth]{./ques_5/y_n_convo}
+\caption{$y(n)$ from the definition of convolution}
+\label{fig:y_n_convo}
+\end{figure}
+
+\item Express the above convolution using a Teoplitz matrix.
+
+\solution
+We will .
+For finding the above convolution using topleitz matrix we have to find topleitz matrix of h(n).
 
 h(n) is tending to 0 for large n.
 So,we take upto some n only.
@@ -623,18 +648,9 @@ and
 \end{align}
 So,
 \begin{align}
-	top\{h(n)\}*x(n)=\myvec{1\\1.5\\3.25\\.\\.}
+	x(n)*h(n)&=top\{h(n)\}x(n)\\
+	&=\myvec{1\\1.5\\3.25\\.\\.}
 \end{align}
-\begin{lstlisting}
-wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/assignment_1/ques_5/5.5.py
-\end{lstlisting}
-\begin{figure}[!ht]
-\centering
-\includegraphics[width=\columnwidth]{./ques_5/y_n_convo}
-\caption{$y(n)$ from the definition of convolution}
-\label{fig:y_n_convo}
-\end{figure}
-
 \item Show that
 \begin{equation}
 y(n) =  \sum_{k=-\infty}^{\infty}x(n-k)h(k)
