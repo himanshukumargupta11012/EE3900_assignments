@@ -295,6 +295,7 @@ The output of the python script in Problem \ref{prob:output} is the audio file S
 \section{Difference Equation}
 \begin{enumerate}[label=\thesection.\arabic*,ref=\thesection.\theenumi]
 \item Let
+\label{def:x_n}
 \begin{equation}
 x(n) = \cbrak{\underset{\uparrow}{1},2,3,4,2,1}
 \end{equation}
@@ -381,7 +382,7 @@ Similarly, it can be shown that
 
 
 \item Obtain $X(z)$ for $x(n)$ defined in problem 
-\ref{def:xn}.
+\ref{def:x_n}.
 
 \solution $Z$-transform of x(n),$X(z)$ is given by
 \begin{align}
@@ -470,8 +471,9 @@ Let
 \begin{equation}
 H\brak{e^{\j \omega}} = H\brak{z = e^{\j \omega}}.
 \end{equation}
-Plot $\abs{H\brak{e^{\j \omega}}}$.  Comment.  $H(e^{\j \omega})$ is
-known as the {\em Discret Time Fourier Transform} (DTFT) of $x(n)$.
+Plot $\abs{H\brak{e^{\j \omega}}}$.  Comment.Is it periodic? If so, find the
+period.  $H(e^{\j \omega})$ is
+known as the {\em Discret Time Fourier Transform} (DTFT) of $h(n)$.
 \\
 \solution $H(e^{jw})$ is given by
 \begin{align}
@@ -485,6 +487,8 @@ So,
 \begin{align}
 	|H(e^{jw})|=\frac{4\cos(\omega)}{5+4\cos(\omega)}
 \end{align}
+Yes it is periodic because $\cos$ is periodic function
+and period of $\cos$ is $2\pi$.So same for that 
 The following code plots Fig. \ref{fig:dtft}.
 \begin{lstlisting}
 wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/assignment_1/ques_4/4.5.py
@@ -495,7 +499,12 @@ wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/a
 \caption{Discret Time Fourier Transform}
 \label{fig:dtft}
 \end{figure}
-\item Express $x(n)$ in terms of $H\brak{e^{\j \omega}}$.
+\item Express $h(n)$ in terms of $H\brak{e^{\j \omega}}$.
+
+\solution 
+\begin{align}
+	h(n)=\frac{1}{2\pi}\int_{-\pi}^\pi H(e^{j\omega})e^{j\omega n}d\omega 
+\end{align}
 \end{enumerate}
 
 \section{Impulse Response}
