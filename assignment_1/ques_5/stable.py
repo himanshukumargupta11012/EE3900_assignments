@@ -12,9 +12,9 @@ def u(n):
         return 0
 
 def h(n):
-    (-1/2)**n*u(n)+(-1/2)**(n-2)*u(n-2)
-# l=0
-# for i in range(-int(np.inf),int(np.inf)):
-#     l+=h(i)
-sum=quad(lambda x: h(x), [-inf, inf])
+    return (-1/2)**n*u(n)+(-1/2)**(n-2)*u(n-2)
+l=0
+for i in range(1000):
+    l+=h(i)
+
 print(l)
