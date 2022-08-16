@@ -592,14 +592,17 @@ H(z) &= \frac{1}{1 + \frac{1}{2}z^{-1}} + \frac{ z^{-2}}{1 + \frac{1}{2}z^{-1}}
 using \eqref{eq:anun} and \eqref{eq:z_trans_shift}.
 \item Sketch $h(n)$. Is it bounded? Justify theoreti-
 cally.
-\\
+
 \solution The following code plots Fig. \ref{fig:h_n_u}.
 
 \begin{lstlisting}
 wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/assignment_1/ques_5/5.2.py
 \end{lstlisting}
-on simplfying we get h(n) as
+Graphically we can see that $h(n)$ is bounded at starting and its decreasing as n increases.So,we can conclude that it is bounded.
+
+$h(n)$ is given by
 \begin{align}
+	h(n)=
 	\begin{cases}
 		\label{eq:h_n_def}
 		5\times \brak{-\frac{1}{2}}^n  & n\geq 2\\
@@ -607,6 +610,27 @@ on simplfying we get h(n) as
 		0 &n<0
 	\end{cases}
 \end{align}
+A sequence \{$x_n$\} is said to be bounded if and only if there exist a positive real number N such that 
+\begin{align}
+	|x_i|\leq N \quad\forall i\in \mathbb{N}
+\end{align} 
+for $n<0$:
+\begin{align}
+	|h(n)|\leq 0
+\end{align}
+for $0\leq n<2$:
+\begin{align}
+	|h(n)|=\abs{-\frac{1}{2}}^n=\brak{\frac{1}{2}}^n \leq 1
+\end{align}
+for $2 \leq n$
+\begin{align}
+	|h(n)|=5\abs{-\frac{1}{2}}^n=5\brak{\frac{1}{2}}^n \leq \frac{5}{4}
+\end{align}
+Combining all we get 
+\begin{align}
+	\abs{h(n)}\leq \frac{5}{4}
+\end{align}
+So,we can conclude that h(n) is bounded
 \begin{align}
 	\because 5\times \brak{-\frac{1}{2}}^n \to 0 \quad	\text{for} \quad n\to \infty 
 \end{align}
@@ -619,6 +643,15 @@ So, we can conclude that h(n) is bounded.
 \end{figure}
 %
 \item Convergent? Justify using the ratio test.
+
+\solution According to ratio test, a sequence  \{$x_n$\} is convergent if 
+\begin{align}
+	\lim_{n \to \infty }\abs{\frac{x^{n+1}}{x^n}}<1
+\end{align}
+So,
+\begin{align}
+\because \lim_{n \to \infty} \abs{\frac{h(n+1)}{h(n)}}=\abs{\frac{5\times \brak{-\frac{1}{2}}^{(n+1)}}{5\times \brak{-\frac{1}{2}}^n} }
+\end{align}
 \item The system with $h(n)$ is defined to be stable if
 \begin{equation}
 \sum_{n=-\infty}^{\infty}h(n) < \infty
