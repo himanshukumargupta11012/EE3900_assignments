@@ -87,6 +87,13 @@ columns=fullflexible
 \newcommand{\EEQA}{\end{eqnarray}}
 \newcommand{\define}{\stackrel{\triangle}{=}}
 
+
+%\usepackage{scalerel}
+%\usepackage{stackengine}
+%\newcommand\showdiv[1]{\overline{\smash{\hstretch{.5}{)}\mkern-3.2mu\hstretch{.5}{)}}#1}}
+%\let\ph\phantom
+
+
 \bibliographystyle{IEEEtran}
 %\bibliographystyle{ieeetr}
 
@@ -386,7 +393,7 @@ Similarly, it can be shown that
 
 \solution $Z$-transform of x(n),$X(z)$ is given by
 \begin{align}
-	\mathcal{Z}\{x(n)\}&=\sum_{n=-\infty}^\infty x(n)z^{-n}\\
+	X(n)&=\sum_{n=-\infty}^\infty x(n)z^{-n}\\
 	&=\sum_{n=0}^5x(n)z^{-n}\\
 	&=1+2z^{-1}+3z^{-2}+4z^{-3}+2z^{-4}+z^{-5}
 \end{align}
@@ -485,10 +492,11 @@ known as the {\em Discret Time Fourier Transform} (DTFT) of $h(n)$.
 \end{align}
 So,
 \begin{align}
-	|H(e^{jw})|=\frac{4\cos(\omega)}{5+4\cos(\omega)}
+	|H(e^{jw})|=\frac{4|\cos(\omega)|}{\sqrt{5+4\cos(\omega)}}
 \end{align}
-Yes it is periodic because $\cos$ is periodic function
-and period of $\cos$ is $2\pi$.So same for that 
+Yes it is periodic because $\cos$ is periodic function.
+Period of numerator is $\pi$ and period of denominator is $2\pi$
+So,period of $|H(e^{jw})|$ would be LCM of $\pi$ and $2\pi$ which is $2\pi$
 The following code plots Fig. \ref{fig:dtft}.
 \begin{lstlisting}
 wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/assignment_1/ques_4/4.5.py
@@ -501,9 +509,28 @@ wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/a
 \end{figure}
 \item Express $h(n)$ in terms of $H\brak{e^{\j \omega}}$.
 
-\solution 
+\solution We know that 
+\begin{align}
+	H(e^{j\omega})=\sum_{k=-\infty}^\infty h(k)e^{-j\omega k}
+\end{align}
 \begin{align}
 	h(n)=\frac{1}{2\pi}\int_{-\pi}^\pi H(e^{j\omega})e^{j\omega n}d\omega 
+\end{align}
+\begin{align}
+\frac{1}{2\pi}\int_{-\pi}^\pi& H(e^{j\omega})e^{j\omega n}d\omega\\
+ &=\frac{1}{2\pi}\int_{-\pi}^\pi \sum_{k=-\infty}^\infty h(k)e^{-j\omega k}e^{j\omega n}d\omega\\
+ &=\frac{1}{2\pi} \sum_{k=-\infty}^\infty h(k)\int_{-\pi}^\pi e^{j\omega (n-k)}d\omega\\
+\end{align}
+ case-1:If($n\neq k$)
+\begin{align}
+ &=\frac{1}{2\pi} \sum_{k\neq n} h(k)\frac{e^{j\omega (n-k)}}{j(n-k)}\Biggr] _{-\pi}^\pi \\
+ &=\frac{1}{2\pi} \sum_{k\neq n} h(k)\frac{2\sin(\pi(n-k))}{(n-k)}\\
+ &=0
+\end{align}
+case-2:If($n=k$)
+\begin{align}
+	&=\frac{1}{2\pi}  h(n)\int_{-\pi}^\pi d\omega\\
+	&=h(n)
 \end{align}
 \end{enumerate}
 
@@ -516,8 +543,37 @@ wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/a
 	\end{align}
 	for H(z) in 
 	\eqref{eq:freq_resp}.
-\item \label{prob:impulse_resp}
 
+
+\solution $H(z)$ is given by
+\begin{align}
+	H(z)=\frac{1+z^{-2}}{1+\frac{1}{2}z^{-1}}=\frac{2+2z^{-2}}{2+z^{-1}}
+\end{align}
+\begin{align}
+	&2z^{-1}-4\\	
+  z^{-1}+2\hspace{2mm}&\overline{\big)\hspace{2mm} 2z^{-2}+2\hspace{15mm}}\\
+	& \hspace{2mm} 2z^{-2}+4z^{-1}\\
+	&\overline{\hspace{11mm}-4z^{-1}+2\hspace{5mm}}\\
+	&\hspace{9mm}-4z^{-1}-8\\ 
+	&\overline{\hspace{24mm}10}
+\end{align}
+So,
+\begin{align}
+	H(z)&=2z^{-1}-4+\frac{10}{z^{-1}+2}\\
+	&=2z^{-1}-4+\frac{5}{\frac{1}{2}z^{-1}+1}\\
+	&=2z^{-1}-4+5\sum_{n=0}^\infty \brak{-\frac{z^{-1}}{2}}^{n}\\
+	&=1-\frac{1}{2}z^{-1}+\sum_{n=2}^\infty \brak{-\frac{1}{2}}^{n}z^{-n}
+\end{align}
+So,h(n) will be given by 
+\begin{align}
+	h(n)=\begin{cases}
+		\label{eq:h_n_def}
+		5\times \brak{-\frac{1}{2}}^n  & n\geq 2\\
+		\brak{-\frac{1}{2}}^n  &2>n\geq0\\
+		0 &n<0
+	\end{cases}
+\end{align}
+\item \label{prob:impulse_resp}
 Find an expression for $h(n)$ using $H(z)$, given that 
 %in Problem \ref{eq:ztransab} and \eqref{eq:anun}, given that
 \begin{equation}
