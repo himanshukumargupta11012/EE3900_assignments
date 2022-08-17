@@ -496,7 +496,10 @@ So,
 \end{align}
 Yes it is periodic because $\cos$ is periodic function.
 Period of numerator is $\pi$ and period of denominator is $2\pi$
-So,period of $|H(e^{jw})|$ would be LCM of $\pi$ and $2\pi$ which is $2\pi$
+So,period of $|H(e^{jw})|$ would be LCM of $\pi$ and $2\pi$ which is $2\pi$.
+
+Same you can see graphcally also.
+ 
 The following code plots Fig. \ref{fig:dtft}.
 \begin{lstlisting}
 wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/assignment_1/ques_4/4.5.py
@@ -523,6 +526,8 @@ Now,
  &=\frac{1}{2\pi}\int_{-\pi}^\pi \sum_{k=-\infty}^\infty h(k)e^{-j\omega k}e^{j\omega n}d\omega\\
  &=\frac{1}{2\pi} \sum_{k=-\infty}^\infty h(k)\int_{-\pi}^\pi e^{j\omega (n-k)}d\omega\\
  &=\frac{1}{2\pi}\cbrak{ \sum_{k\neq n} h(k)\frac{e^{j\omega (n-k)}}{j(n-k)}\Biggr] _{-\pi}^\pi 	+h(n)\int_{-\pi}^\pi d\omega }\\
+% &=\frac{1}{2\pi}\sum_{k\neq n} h(k)\frac{e^{j\omega (n-k)}}{j(n-k)}\Biggr] _{-\pi}^\pi \\
+% &	+\frac{1}{2\pi}h(n)\int_{-\pi}^\pi d\omega \\
  &=\frac{0+2\pi h(n)}{2\pi}\\
  &=h(n)
 \end{align}
@@ -568,6 +573,14 @@ So,h(n) will be given by
 		\brak{-\frac{1}{2}}^n  &2>n\geq0\\
 		0 &n<0
 	\end{cases}
+\end{align}
+So,now
+\begin{align}
+	&h(0)=1\\
+	&h(1)=-\frac{1}{2}\\
+	&h(2)=\frac{5}{4}\\
+	&h(3)=-\frac{5}{8}\\
+	&h(4)=\frac{5}{16}
 \end{align}
 \item \label{prob:impulse_resp}
 Find an expression for $h(n)$ using $H(z)$, given that 
@@ -627,10 +640,7 @@ Combining all we get
 	\abs{h(n)}\leq \frac{5}{4}
 \end{align}
 So,we can conclude that h(n) is bounded
-\begin{align}
-	\because 5\times \brak{-\frac{1}{2}}^n \to 0 \quad	\text{for} \quad n\to \infty 
-\end{align}
-So, we can conclude that h(n) is bounded.
+
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=\columnwidth]{./ques_5/h_n}
@@ -644,7 +654,7 @@ So, we can conclude that h(n) is bounded.
 \begin{align}
 	\lim_{n \to \infty }\abs{\frac{x^{n+1}}{x^n}}<1
 \end{align}
-So,
+
 \begin{align}
 \because \lim_{n \to \infty} \abs{\frac{h(n+1)}{h(n)}}&=\abs{\frac{5\times \brak{-\frac{1}{2}}^{(n+1)}}{5\times \brak{-\frac{1}{2}}^n} }\\
 &=\frac{1}{2}
@@ -721,7 +731,6 @@ wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/a
 \item Express the above convolution using a Teoplitz matrix.
 
 \solution
-We will .
 For finding the above convolution using topleitz matrix we have to find topleitz matrix of h(n).
 
 h(n) is tending to 0 for large n.
