@@ -1,32 +1,46 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-N=6
+N=20
 
-x=[1,2,3,4,2,1]
+def x(n):
+    if n>5 or n<0 :
+        return 0
+    elif n<4:
+     return n+1
+    else:
+        return 6-n
 
-
-
-def X(k):
+def h(n):
+    if n<0:
+        return 0
+    elif n<2:
+        return (-1/2)**n
+    else:
+        return 5*(-1/2)**n
+def dft(k,fn):
     l=0
-    for i in range(6):
-        l+=x[i]*np.exp(-1j*2*np.pi*k*i/N)
+    for i in range(N):
+        l+=fn(i)*np.exp(-1j*2*np.pi*k*i/N)
     return l
+
+
+
 k=np.linspace(0,N-1,N)
-X2=np.vectorize(X)
+dft2=np.vectorize(dft)
 
-print(X2(k))
-
+X=dft2(k,x)
+H=dft2(k,h)
+# print(X)
 
 plt.subplot(211)
-plt.stem(k,np.real(X2(k)))
+plt.stem(k,np.real(dft2(k,x)))
 plt.grid ()
-plt.xlabel("k")
 plt.ylabel("$X(k)$")
 
-plt.stem(212)
-plt.stem(k,np.imag(X2(k)))
+plt.subplot(212)
+plt.stem(k,np.real(dft2(k,h)))
 plt.xlabel("k")
-plt.ylabel("$X(k)$")
+plt.ylabel("$H(k)$")
 plt.grid ()
 plt.show()

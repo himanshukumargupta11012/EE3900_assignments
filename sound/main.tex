@@ -783,28 +783,46 @@ Compute
 X(k) \define \sum _{n=0}^{N-1}x(n) e^{-\j2\pi kn/N}, \quad k = 0,1,\dots, N-1
 \end{equation}
 and $H(k)$ using $h(n)$.
+
+\solution Download and run the following code.
+\begin{lstlisting}
+wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/assignment_1/ques_6/dtft_sum.py
+\end{lstlisting}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\columnwidth]{./ques_6/dtft_sum}
+	\title{X(k) and H(k) graph wrt k}
+	\label{fig:dtft_sum}
+\end{figure}
 \item Compute 
 \begin{equation}
 Y(k) = X(k)H(k)
 \end{equation}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\columnwidth]{./ques_6/Y_k}
+	\caption{$Y(k)$ using $X(k)$ and $H(k)$}
+	\label{fig:Y_k}
+\end{figure}
 \item Compute
 \begin{equation}
  y\brak{n}={\frac {1}{N}}\sum _{k=0}^{N-1}Y\brak{k}\cdot e^{\j 2\pi kn/N},\quad n = 0,1,\dots, N-1
 \end{equation}
 \\
-\solution The following code plots Fig. \ref{fig:ynconv}. Note that this is the same as 
+\solution The following code plots Fig. \ref{fig:y_n_idtft}. Note that this is the same as 
 $y(n)$ in  Fig. 
-\ref{fig:xnyn}. 
+\ref{fig:y_n}. 
 %
 \begin{lstlisting}
 wget https://raw.githubusercontent.com/gadepall/EE1310/master/filter/codes/yndft.py
 \end{lstlisting}
-%\begin{figure}[!ht]
-%\centering
-%\includegraphics[width=\columnwidth]{./figs/yndft}
-%\caption{$y(n)$ from the DFT}
-%\label{fig:yndft}
-%\end{figure}
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\columnwidth]{./ques_6/y_n_idtft}
+\caption{$y(n)$ from the DFT}
+\label{fig:y_n_idtft}
+\end{figure}
 
 \item Repeat the previous exercise by computing $X(k), H(k)$ and $y(n)$ through FFT and 
 IFFT.
