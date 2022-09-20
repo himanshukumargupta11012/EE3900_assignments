@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 N=20
 
 def x(n):
-    if n>5 or n<0 :
+    if n<0 or n>5:
         return 0
     elif n<4:
      return n+1
@@ -34,12 +34,12 @@ H=dft2(k,h)
 # print(X)
 
 plt.subplot(211)
-plt.stem(k,np.real(dft2(k,x)))
+plt.stem(k,np.real(X))
 plt.grid ()
 plt.ylabel("$X(k)$")
 
 plt.subplot(212)
-plt.stem(k,np.real(dft2(k,h)))
+plt.stem(k,np.real(H))
 plt.xlabel("k")
 plt.ylabel("$H(k)$")
 plt.grid ()

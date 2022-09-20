@@ -809,7 +809,7 @@ Y(k) = X(k)H(k)
 \begin{equation}
  y\brak{n}={\frac {1}{N}}\sum _{k=0}^{N-1}Y\brak{k}\cdot e^{\j 2\pi kn/N},\quad n = 0,1,\dots, N-1
 \end{equation}
-\\
+
 \solution The following code plots Fig. \ref{fig:y_n_idtft}. Note that this is the same as 
 $y(n)$ in  Fig. 
 \ref{fig:y_n}. 
@@ -826,10 +826,28 @@ wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/a
 
 \item Repeat the previous exercise by computing $X(k), H(k)$ and $y(n)$ through FFT and 
 IFFT.
-\item Wherever possible, express all the above equations as matrix equations.
-\item Verify the above equations by generating the DFT matrix in python.
-
-\item Compute 8 point FFT
+\solution Download and rum the following code.
+\begin{lstlisting}
+wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/assignment_1/ques_6/fft_ifft.py
+\end{lstlisting}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\columnwidth]{./ques_6/X_H_fft.png}
+	\caption{$H(k)$ and $X(k)$ using FFT}
+	\label{fig:X_h_fft}
+\end{figure}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\columnwidth]{./ques_6/Y_fft}
+	\caption{$Y(k)$ using $X(k)$ and $H(k)$}
+	\label{fig:Y_fft}
+\end{figure}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\columnwidth]{./ques_6/y_ifft}
+	\caption{$y(n)$ using IFFT}
+	\label{fig:y_ifft}
+\end{figure}
 \end{enumerate}
 
 \section{Exercises}
