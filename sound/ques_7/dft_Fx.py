@@ -4,7 +4,7 @@ N=6
 
 F_N=np.empty([N,N],dtype=complex)
 
-for i in range(6):
+for i in range(N):
   for k in range(i+1):
     F_N[i][k]=np.exp(-1j*2*np.pi*i*k/N)
     if i!=k:

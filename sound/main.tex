@@ -1445,6 +1445,78 @@ wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/a
 	\begin{align}
 		\vec{x}=\myvec{1\\2\\3\\4\\2\\1\\0\\0}
 	\end{align}
+We know that if N is even then
+\begin{align}
+	\vec{F}_N&=\begin{bmatrix}
+		\vec{F}_{N/2}&\vec{D}_{N/2}\vec{F}_{N/2}\\
+		\vec{F}_{N/2}&-\vec{D}_{N/2}\vec{F}_{N/2}
+	\end{bmatrix}\vec{P}_N
+\end{align}
+So,
+\begin{align}
+	\vec{F}_2&=\begin{bmatrix}
+		\vec{F}_{1}&\vec{D}_{1}\vec{F}_{1}\\
+		\vec{F}_{1}&-\vec{D}_{1}\vec{F}_{1}
+	\end{bmatrix}\vec{P}_2\\
+&=\begin{bmatrix}
+	1& 1\\
+	1&-1
+\end{bmatrix}
+\begin{bmatrix}
+1& 0\\
+0&1
+\end{bmatrix}\\
+&=\begin{bmatrix}
+	1& 1\\
+	1&-1
+\end{bmatrix}
+\end{align}
+Now,
+\begin{align}
+	\vec{D}_{2}\vec{F}_{2}&=diag\myvec{W_{4}^{0} & W_{4}^{1}}\vec{F}_{2}\\
+	&=\begin{bmatrix}
+		1& 0\\
+		0&-j
+	\end{bmatrix}
+\begin{bmatrix}
+	1& 1\\
+	1&-1
+\end{bmatrix}\\
+&=\begin{bmatrix}
+	1& 1\\
+	-j&j
+\end{bmatrix}
+\end{align}
+So,
+\begin{align}
+	\vec{F}_4&=\begin{bmatrix}
+		\vec{F}_{2}&\vec{D}_{2}\vec{F}_{2}\\
+		\vec{F}_{2}&-\vec{D}_{2}\vec{F}_{2}
+	\end{bmatrix}\vec{P}_4\\
+&=\begin{bmatrix}
+	1& 1&1& 1\\
+	1&-1&-j&j\\
+	1& 1&-1& -1\\
+	1&-1&j&-j
+\end{bmatrix}\begin{bmatrix}
+1&0&0&0\\
+0&0&1&0\\
+0&1&0&0\\
+0&0&0&1\\
+\end{bmatrix}\\
+&=\begin{bmatrix}
+	1&1&1&1\\
+	1&-j&-1&j\\
+	1&-1&1&-1\\
+	1&j&-1&-j\\
+\end{bmatrix}
+\end{align}
+Now,
+\begin{align}
+	\vec{D}_{4}\vec{F}_{4}&=diag\myvec{W_{8}^{0} & W_{8}^{1}&W_{8}^{2}&W_{8}^{3}}\vec{F}_{4}\\
+	&=
+\end{align}
+
 	%	    \eqref{eq:fft-mat-def}
 	\item Write a C program to compute the 8-point FFT. 
 	
@@ -1459,7 +1531,7 @@ Answer the following questions by looking at the python code in Problem \ref{pro
 	\item
 	The command
 	\begin{lstlisting}
-		output_signal = signal.lfilter(b, a, input_signal)
+output_signal = signal.lfilter(b, a, input_signal)
 	\end{lstlisting}
 	in Problem \ref{prob:output} is executed through the following difference equation
 	\begin{equation}
