@@ -8,3 +8,4 @@ sound/convolution.py
 *.fdb_latexmk
 *.toc
 convolution.py
+*.exe

@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-N=20
+N=6
 
 def x(n):
     if n<0 or n>5:
@@ -26,12 +26,12 @@ def dft(k,fn):
 
 
 
-k=np.linspace(0,N-1,N)
+k=np.arange(N)
 dft2=np.vectorize(dft)
 
 X=dft2(k,x)
 H=dft2(k,h)
-# print(X)
+print(X)
 
 plt.subplot(211)
 plt.stem(k,np.real(X))
