@@ -1439,7 +1439,11 @@ wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/a
 	\item Repeat the above exercise using the FFT
 	after zero padding $\vec{x}$.
 	
-	\solution  We know that FFT works for N  which is of the form $2^n$ where $n\in \cal N$.
+	\solution  
+	\begin{lstlisting}
+wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/master/assignment_1/ques_7/fft_matrix.py
+	\end{lstlisting}
+	We know that FFT works for N  which is of the form $2^n$ where $n\in \cal N$.
 	So, we have to pad $\vec{x}$ with zeros to its nearest $2^n$ length.
 	So,
 	\begin{align}
@@ -1514,9 +1518,47 @@ So,
 Now,
 \begin{align}
 	\vec{D}_{4}\vec{F}_{4}&=diag\myvec{W_{8}^{0} & W_{8}^{1}&W_{8}^{2}&W_{8}^{3}}\vec{F}_{4}\\
-	&=
+	&=\begin{bmatrix}
+		1&0&0&0\\
+		0&\frac{1-j}{\sqrt{2}}&0&0\\
+		0&0&-j&0\\
+		0&0&0&\frac{-1-j}{\sqrt{2}}
+	\end{bmatrix}
+\begin{bmatrix}
+	1&1&1&1\\
+	1&-j&-1&j\\
+	1&-1&1&-1\\
+	1&j&-1&-j\\
+\end{bmatrix}\\
+&=\begin{bmatrix}
+	1&1&1&1\\
+	\frac{1-j}{\sqrt{2}}&\frac{-1-j}{\sqrt{2}}&\frac{j-1}{\sqrt{2}}&\frac{1+j}{\sqrt{2}}\\
+	-j&j&-j&j\\
+	\frac{-1-j}{\sqrt{2}}&\frac{1-j}{\sqrt{2}}&\frac{1+j}{\sqrt{2}}&\frac{j-1}{\sqrt{2}}
+\end{bmatrix}
 \end{align}
-
+So,
+\begin{align}
+	\vec{F}_8&=\begin{bmatrix}
+		\vec{F}_{4}&\vec{D}_{4}\vec{F}_{4}\\
+		\vec{F}_{4}&-\vec{D}_{4}\vec{F}_{4}
+	\end{bmatrix}\vec{P}_8\\
+&=\begin{bmatrix}
+	1&1&1&1&1&1&1&1\\
+	1&\frac{1-j}{\sqrt{2}}&-j&\frac{-1-j}{\sqrt{2}}&-1&\frac{-1+j}{\sqrt{2}}&j&\frac{1+j}{\sqrt{2}}\\
+	1&-j&-1&j&1&-j&-1&j\\
+	1&\frac{-1-j}{\sqrt{2}}&j&\frac{1-j}{\sqrt{2}}&-1&\frac{1+j}{\sqrt{2}}&-j&\frac{-1+j}{\sqrt{2}}\\
+	1&-1&1&-1&1&-1&1&-1\\
+	1&\frac{-1+j}{\sqrt{2}}&-j&\frac{1+j}{\sqrt{2}}&-1&\frac{1-j}{\sqrt{2}}&j&\frac{-1-j}{\sqrt{2}}\\
+	1&j&-1&-j&1&j&-1&-j\\
+	1&\frac{1+j}{\sqrt{2}}&j&\frac{-1+j}{\sqrt{2}}&-1&\frac{-1-j}{\sqrt{2}}&-j&\frac{1-j}{\sqrt{2}}
+\end{bmatrix}
+\end{align}
+Now,
+\begin{align}
+	\vec{X}&=\vec{F}_8\vec{x}\\
+	&=\myvec{13\\-3.12-6.54j\\j\\1.12-.54j\\-1\\1.12+.54j\\-j\\-3.12+6.54}
+\end{align}
 	%	    \eqref{eq:fft-mat-def}
 	\item Write a C program to compute the 8-point FFT. 
 	

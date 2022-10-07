@@ -1,6 +1,6 @@
 import numpy as np
-
-N=6
+np.set_printoptions(precision=21)
+N=8
 
 F_N=np.empty([N,N],dtype=complex)
 
@@ -13,6 +13,5 @@ print(F_N)
 
 x=np.array([[1],[2],[3],[4],[2],[1]])
 
-X=np.dot(F_N,x)
+# X=np.dot(F_N,x)
 
-print(X)
