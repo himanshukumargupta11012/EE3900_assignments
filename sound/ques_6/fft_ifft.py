@@ -102,3 +102,5 @@ plt.xticks(k)
 plt.grid ()
 plt.legend(["IFFT","DIff. Eqn.","IDFT"])
 plt.show()
+
+# dfkjljf
