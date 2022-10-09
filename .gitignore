@@ -1,0 +1,11 @@
+EE3900-2022/
+sound/convolution.py
+*.out
+*.aux
+*.log
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.toc
+convolution.py
+*.exe
