@@ -1,19 +1,33 @@
 import numpy as np
+import math
 import matplotlib.pyplot as plt
-from sympy import symbols,simplify
+from sympy import symbols
 
-x=symbols('x')
-y=symbols('y')
-t=symbols('t')
+#n=symbols("n")
+al=(1+math.sqrt(5))/2
+be=(1-math.sqrt(5))/2
 
 def a(n):
-  return (x**n-y**n)/(x-y)
+  return (al**n-be**n)/(al-be)
 
-l=0
-for i in range(1,6):
-  l+=a(i)
-print(simplify(l))
-if(l==a(5+2)-1):
-  print("true")
-else:
-  print("false")
+def LHS1(n):
+    sum=0
+    for i in range(1,n+1):
+        sum+=a(i)
+    return sum
+def RHS1(n):
+    return a(n+2)-1
+k=np.arange(1,11)
+RHS1_vec=np.vectorize(RHS1)
+LHS1_vec=np.vectorize(LHS1)
+
+plt.stem(k,RHS1_vec(k),c='r')
+plt.stem(k,LHS1_vec(k),c='g')
+plt.grid()
+plt.show()
+
+
+def LHS(k):
+    int l=0
+    for i in range(1,):
+        sum+=

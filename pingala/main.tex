@@ -253,11 +253,19 @@ Verify the following using a python code.
 \begin{align}
 	\sum_{k=1}^{n}a_k = a_{n+2}-1, \quad n \ge 1
 \end{align}
+
+\solution Download and run the following python program.
+		\begin{lstlisting}
+https://github.com/himanshukumargupta11012/EE3900_assignments/blob/main/pingala/ques_1/1.1.py
+		\end{lstlisting}
  \item 
 \begin{align}
 	\sum_{k=1}^{\infty}\frac{a_k}{10^k} =\frac{10}{89}
 \end{align}
- \item 
+\solution Download and run the following python program.
+		\begin{lstlisting}
+https://github.com/himanshukumargupta11012/EE3900_assignments/blob/main/pingala/ques_1/1.1.py
+		\end{lstlisting}
 \begin{align}
 	b_n =\alpha^n + \beta^n, \quad n \ge 1
 \end{align}
@@ -273,8 +281,8 @@ Verify the following using a python code.
 %\cite{proakis_dsp}
 \begin{align}
 	X^{+}(z) = \sum_{n = 0}^{\infty}x(n)z^{-n}, \quad z \in \mathbb{C}
-\label{eq:one-Z}
-\end{align}
+\label{eq:one-Z}      
+\end{align}   
 	\item The {\em Pingala} series is generated using the difference equation 
 \begin{align}
 	x(n+2) = x\brak{n+1} + x\brak{n},  \quad x(0) = x(1) = 1, n \ge 0
@@ -282,7 +290,21 @@ Verify the following using a python code.
 \end{align}
 Generate a stem plot for $x(n)$.
 \item 		Find $X^{+}(z)$.
-	\item Find $x(n)$.
+
+\solution
+\begin{align}
+X^{+}(z)&=\sum_{n = 0}^{\infty}x(n)z^{-n}\\
+		&=x(0)+x(1)+\sum_{n = 2}^{\infty}\{x(n-1)+x(n-2)\}z^{-n}\\
+		&=1+z^{-1}+\sum_{n = 2}^{\infty}x(n-1)z^{-n}+\sum_{n = 2}^{\infty}x(n-2)z^{-n}\\
+		&=1+z^{-1}+\sum_{m = 1}^{\infty}x(m)z^{-m-1}+\sum_{p = 0}^{\infty}x(p)z^{-p-2}\\
+		&=1+z^{-1}+z^{-1}\{\sum_{m = 0}^{\infty}x(m)z^{-m}-1\}\\
+		&=+z^{-2}\sum_{p = 0}^{\infty}x(p)z^{-p}\\
+		&=1+z^{-1}+z^{-1}\{X^{+}(z)-1\}+z^{-2}X^{+}(z)\\
+		&=1+z^{-1}X^+(z)+z^{-2}X^+(z)\\
+		&\implies X^{+}(z)=1+z^{-1}X^+(z)+z^{-2}X^+(z)\\
+		&\implies X^+(z)=\frac{1}{1-z^{-1}+z^{-2}}
+\end{align}
+	item Find $x(n)$.
 
 	\item Sketch 
 \begin{align}
