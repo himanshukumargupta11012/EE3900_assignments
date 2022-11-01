@@ -11,11 +11,12 @@ def x(n):
 
 
 x_vec=np.vectorize(x)
-k=np.arange(10)
+k=np.arange(0,10)
 
 plt.stem(k,x_vec(k))
 plt.grid()
 plt.xlabel("$n$")
 plt.ylabel("$x(n)$")
 plt.xticks(k)
+plt.savefig("./2.2.png")
 plt.show()
