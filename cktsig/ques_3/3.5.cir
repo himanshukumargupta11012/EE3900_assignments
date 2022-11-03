@@ -1,0 +1,24 @@
+Question 3.5
+
+
+R1 vc 0 1
+C1 vc 0 1u ic=1.33
+R2 vc v1 2
+V2 v1 0 2
+.tran 100u 10u uic
+
+.control
+run
+wrdata 3.5.dat V(vc)
+.endc
+
+.end
+
+*V1 v1 0 2
+*R1 vc v1 2
+*R2 vc 0 1
+*C1 vc 0 1u ic=1.33u
+
+*.tran 10p 10u uic
+
+

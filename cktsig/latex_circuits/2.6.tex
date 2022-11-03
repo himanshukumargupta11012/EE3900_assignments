@@ -1,0 +1,7 @@
+\begin{circuitikz} \draw
+			(.5,3)--(0,3) to[battery1,l_=1V] (0,0)
+			(0,0)--(3,0)node[anchor=north east]{R}--(6,0)
+			(0,3)to[generic=$1\Omega$](3,3)node[anchor=south east]{S}to[generic=$2\Omega$](6,3)
+			(6,3) to[battery1,l=2V] (6,0)
+			(3,0) to[generic,l_=$\frac{1}{sC_0}$] (3,3);
+		\end{circuitikz}

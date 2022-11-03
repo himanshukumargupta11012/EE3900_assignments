@@ -529,45 +529,40 @@ u(t) =
 \end{figure}
 \item Draw the circuit using latex-tikz.
 
-	\solution
-
-		\begin{circuitikz} \draw
-			(.5,3)node[anchor=north east]{P}--(0,3) to[battery1,l_=1V] (0,0)
-			(0,3)--(.5,3)
-			(1,0)--(1,2.5)node[anchor=north west]{Q}
-			(0,0)--(6,0)
-			(1,3)to[R=$1\Omega$](3,3)to[R=$2\Omega$](6,3)
-			(1,3)--(.6,3.4)node[anchor=south west]{S}
-			(6,3) to[battery1,l=2V] (6,0)
-			(3,0) to[C,l_=$\mu F$] (3,3);
-		\end{circuitikz}
+	\solution See fig. \ref{crct:2.2}
+\begin{figure}[!ht]
+	\input{./latex_circuits/2.2.tex}
+	\centering
+	\caption{Given Circuit}
+	\label{crct:2.2}
+\end{figure}
 
 \item Find $q_1$.
 
 	\solution
-		On connecting S to P for a long time make the capacitor fully charged. So,it will behave like disconnected wire. So, circuit will look like
+		On connecting S to P for a long time capacitor get fully charged behave like disconnected wire. So, circuit will look like \ref{crct:2.3}
+\begin{figure}[!ht]
+	\input{./latex_circuits/2.3.tex}
+	\centering
+	\caption{circuit when conected to P for long time}
+	\label{crct:2.3}
+\end{figure}
 
-		\begin{circuitikz} \draw
-			(.5,3)--(0,3) to[battery1,l_=1V] (0,0)
-			(0,0)--(3,0)node[anchor=south]{M}--(6,0)
-			(0,3)to[R=$1\Omega$](3,3)node[anchor=north]{N} to[R=$2\Omega$](6,3)
-			(6,3) to[battery1,l=2V] (6,0);
-		\end{circuitikz}
 
-So, on applying KVL we get current as,
+		On applying KVL on circuit in fig. \ref{crct:2.3} we get current as,
 		\begin{align}
 			i=1/3	
 		\end{align}
 in counter-clockwise direction
 
-So, PD across the capacitor i.e. between M and N is given by,
+So, PD across the capacitor i.e. across M and N is given by,
 		\begin{align}
-			V_Q&=1+\frac{1}{3}\times 1\\
+			v_{C_0}&=1+\frac{1}{3}\times 1\\
 			&=\frac{4}{3}
 		\end{align}
-		Now, charge on capacitor will be
+		So, charge on capacitor will be
 		\begin{align}
-			q_1&=V_QC_0\\
+			q_1&=v_{C_0}C_0\\
 			&=\frac{4}{3}\mu C
 		\end{align}
 			
@@ -580,7 +575,7 @@ So, PD across the capacitor i.e. between M and N is given by,
 			&=\frac{e^{-st}}{-s}\bigg]_0^\infty\\
 			&=\frac{1}{s}
 		\end{align}
-Since $e^{-st}$ is defined at $t\to \infty$ only for s>0
+Since $e^{-st}$ is defined at $t\to \infty$ only for $s>0$
 
 So, ROC will be $s>0$
 	\item Show that 
@@ -598,7 +593,7 @@ So, ROC will be $s>0$
 			&=\frac{1}{s+a}
 		\end{align}
 
-		Since $e^{-(s+a)t}$ is defined at $t\to \infty$ only for s>-a
+		Since $e^{-(s+a)t}$ is defined at $t\to \infty$ only for $s>-a$
 
 		So, ROC will be $s>-a$
 
@@ -619,31 +614,213 @@ So, ROC will be $s>0$
 		Find the voltage across the capacitor $V_{C_0}(s)$.
 		
 		\solution
-		Given that $V_1(s)=\frac{1}{s}$ and $V_2(s)=\frac{2}{s}$
+
+
+\begin{figure}[!ht]
+	\input{./latex_circuits/2.6.tex}
+	\centering
+	\caption{s-domain resistive circuit}
+	\label{crct:2.6}
+\end{figure}
+		from above 2 equations we can conclude that $V_1(s)=\frac{1}{s}$ and $V_2(s)=\frac{2}{s}$
+
+		Now, let voltage at point R is 0. Applying KCL at point S i.e. junction of 3 resistors we get
+		\begin{align}
+			\frac{V_S(s)-0}{1/sC_0}+&\frac{V_S(s)-1/s}{1}+\frac{V_S(s)-2/s}{2}=0\\
+		\implies	V_S(s)&=\frac{4}{s(3+2s)}
+		\end{align}
+		Now, the voltage across capacitor is given by
+		\begin{align}
+			V_{C_0}(s)&=V_S-V_R\\
+			&=\frac{4}{s(3+2s)}
+		\end{align}
 	\item Find $v_{C_0}(t)$.  Plot using python.
+
+		\solution $v_{C_0}(t)$ is given by
+			\begin{align}
+				v_{C_0}(t)&=\mathcal{L}^{-1}\sbrak{V_{C_0}(s)}\\
+				&=\mathcal{L}^{-1}\sbrak{\frac{4}{s(3+2s)}}\\
+				&=\frac{4}{3}\brak{\mathcal{L}^{-1}\sbrak{\frac{1}{s}}-\mathcal{L}^{-1}\sbrak{\frac{1}{s+3/2}}}\\
+				&=\frac{4}{3}\brak{1-e^{-\frac{3}{2}}}u(t)
+				\end{align}
+Run below python code to get fig. \ref{fig:v_t_1} which is of $v_{C_0}(t)$
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\columnwidth]{./ques_2/v_t_1.png}
+\label{fig:v_t_1}
+\caption{$v_{C_0}(t)$ wrt t}	
+\end{figure}
 	\item Verify your result using ngspice.
+
+		\solution Run the below ngspice code to get data and then use given python file to plot fig. \ref{fig:2.8}
+
+		In fig. \ref{fig:2.8}, we can see that both results are coinciding. So, our answer is correct
+\begin{lstlisting}
+https://github.com/himanshukumargupta11012/EE3900_assignments/blob/main/cktsig/ques_2/2.8.cir
+https://github.com/himanshukumargupta11012/EE3900_assignments/blob/main/cktsig/ques_2/2.8.py
+		\end{lstlisting}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\columnwidth]{./ques_2/2.8.png}
+	\caption{theoretical v/s analytical}	
+	\label{fig:2.8}
+\end{figure}
+
 	\item Obtain Fig. 
 			\ref{fig:lap-ckt}
 			using the equivalent differential equation.
+
+			\solution Using KCL at the junction of resistors and capacitor, we get
+			\begin{align}
+				\frac{v_{C}(t)-v_1(t)}{R_1}+\frac{v_{C}(t)-v_{2}(t)}{R_2}+\frac{dq(t)}{dt}=0\\
+			\end{align}
+where $q(t)$ is charge on capacitor
+
+Taking laplace both sides, we get
+\begin{align}
+	\frac{V_{C}(s)-0}{R_1}+\frac{V_{C}(s)-V_{2}(s)}{R_2}+sQ(s)-q(0)=0\\
+	\frac{V_{C}(s)-0}{R_1}+\frac{V_{C}(s)-V_{2}(s)}{R_2}+sC_0\frac{Q(s)}{C_0}-0=0\\
+	\frac{V_{C}(s)-0}{R_1}+\frac{V_{C}(s)-V_{2}(s)}{R_2}+sC_0V_{C}=0\\
+	\frac{V_{C}(s)-0}{R_1}+\frac{V_{C}(s)-V_{2}(s)}{R_2}+\frac{V_{C}(s)}{\frac{1}{sC_0}}=0\\
+\end{align}
+The above equation is same as Fig. \ref{fig:lap-ckt} 
+
 \end{enumerate}
 
  \section{Initial Conditions}
 \begin{enumerate}[label=\arabic*.,ref=\thesection.\theenumi]
+
 \numberwithin{equation}{section}
 \item Find $q_2$ in Fig. 
 			\ref{fig:ckt}.
+
+			\solution
+			Since S is connected to Q for a long time so capacitor get fully charged and behave as a disconnected wire. So, the circuit will look like this
+
+			
+\begin{figure}[!ht]
+	\input{./latex_circuits/3.1.tex}
+	\centering
+	\caption{when connected to Q for long time}
+	\label{crct:3.1}
+\end{figure}
+		So, current in the circuit is given by
+		\begin{align}
+			i=\frac{2}{3}A
+		\end{align}
+		in counter-clockwise direction
+
+		So, voltage across capacitor is given by
+		\begin{align}
+			v_{C_0}=\frac{2}{3}\times1=\frac{2}{3}
+		\end{align}
+		So, $q_2$ will be
+		\begin{align}
+			q_2&=V_{C_0}C_0\\
+			&=\frac{2}{3}\mu C
+		\end{align}
+
 \item Draw the equivalent $s$-domain resistive circuit when S is switched to position Q.  Use variables $R_1, R_2, C_0$ for the passive elements.
 Use latex-tikz.
 		\label{prob:init}
-	
-		\item $V_{C_0}(s)$ = ?  
+
+		\solution $s$-domain resistive circuit would be similar to previous one except a difference that here we have to add a potential difference of $\frac{4}{3}$ because there is initial charge present in cpacitor.
+		So, the circuit looks like fig. \ref{crct:3.2}
+
+\begin{figure}[!ht]
+	\input{./latex_circuits/3.2.tex}
+	\centering
+	\caption{s-domain resistive circuit}
+	\label{crct:3.2}
+\end{figure}
+		\item $V_{C_0}(s)$ = ? 
+
+			\solution In fig. \ref{crct:3.2}, let voltage at point R is 0. Applying KCL at point S i.e. junction of 3 resistors we get
+		\begin{align}
+			\frac{V_S(s)-\frac{4}{3}}{1/sC_0}+&\frac{V_S(s)-0}{1}+\frac{V_S(s)-2/s}{2}=0\\
+			V_S(s)&=\frac{\frac{4}{3}s^2+\frac{1}{C_0}}{s(s+\frac{3}{2C_0})}
+		\end{align}
+		Now, the voltage across capacitor is given by
+		\begin{align}
+			V_{C_0}(s)&=V_S-V_R\\
+			&=\frac{\frac{4}{3}s^2+\frac{1}{C_0}}{s(s+\frac{3}{2C_0})}
+		\end{align}
+
 	\item $v_{C_0}(t)$ = ? Plot using python.
+
+		\solution 
+ $v_{C_0}(t)$ is given by
+			\begin{align}
+				v_{C_0}(t)&=\mathcal{L}^{-1}\sbrak{V_{C_0}(s)}\\
+				&=\mathcal{L}^{-1}\sbrak{\frac{\frac{4}{3}s^2+\frac{1}{C_0}}{s(s+\frac{3}{2C_0})}}\\
+				&=\frac{4}{3}\mathcal{L}^{-1}\sbrak{1}+\mathcal{L}^{-1}\sbrak{\frac{2}{3s}}-\mathcal{L}^{-1}\sbrak{-\frac{8}{3(s+3/2)}}\\
+				&=\frac{2}{3}\brak{1+e^{-\frac{3}{2}}}u(t)
+				\end{align}
+				Run below python code to get fig. \ref{fig:3.4} which is of $v_{C_0}(t)$
+\begin{lstlisting}
+https://github.com/himanshukumargupta11012/EE3900_assignments/blob/main/cktsig/ques_3/3.4.py
+		\end{lstlisting}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\columnwidth]{./ques_3/3.4.png}
+	\caption{$v_{C_0}(t)$ wrt t}	
+	\label{fig:3.4}
+\end{figure}
+
+
 	\item Verify your result using ngspice.
+
+\solution Run the below ngspice code to get data and then use given python file to plot fig. \ref{fig:3.5}
+
+		In fig. \ref{fig:3.5}, we can see that both results are coinciding. So, our answer is correct
+\begin{lstlisting}
+https://github.com/himanshukumargupta11012/EE3900_assignments/blob/main/cktsig/ques_3/3.5.cir
+https://github.com/himanshukumargupta11012/EE3900_assignments/blob/main/cktsig/ques_3/3.5.py
+		\end{lstlisting}
+
+\begin{figure}[!ht]
+\centering
+	\includegraphics[width=\columnwidth]{./ques_3/3.5.png}
+	\caption{theoretical v/s analytical}	
+	\label{fig:3.5}
+\end{figure}
+
 	\item Find $v_{C_0}(0-), v_{C_0}(0+)$ and  $v_{C_0}(\infty) $. 
+
+		\solution 
+		Charge not changes abruptly.So,
+		\begin{align}
+			v_{C}(0^-)=v_{C}(0^+)&=v_{C}(0)\\
+			&=\frac{2}{3}\brak{1+e^{-\frac{3\times 10^{6}\times 0}{2}}}u(0)\\
+			&=\frac{4}{3}
+		\end{align}
+		and
+		\begin{align}
+			v_C(\infty)&=\lim_{t\to \infty}\frac{2}{3}\brak{1+e^{-\frac{3\times 10^{6}t}{2}}}u(t)\\
+			&=\frac{2}{3}
+		\end{align}
+
 	\item Obtain the Fig.  in problem 
 		\ref{prob:init}
 			using the equivalent differential equation.
 
+			\solution Using KCL at the junction of resistors and capacitor after joining S to Q in fig. \ref{crct:2.2}, we get
+			\begin{align}
+				\frac{v_{C}(t)-0}{R_1}+\frac{v_{C}(t)-v_{2}(t)}{R_2}+\frac{dq(t)}{dt}=0\\
+			\end{align}
+where $q(t)$ is charge on capacitor
+
+Taking laplace both sides, we get
+\begin{align}
+	\frac{V_{C}(s)-0}{R_1}+\frac{V_{C}(s)-V_{2}(s)}{R_2}+sQ(s)-q(0)=0\\
+	\frac{V_{C}(s)-0}{R_1}+\frac{V_{C}(s)-V_{2}(s)}{R_2}+sC_0\frac{Q(s)}{C_0}-q(0)=0\\
+	\frac{V_{C}(s)-0}{R_1}+\frac{V_{C}(s)-V_{2}(s)}{R_2}+sC_0V_{C}-\frac{4}{3}C_0=0\\
+	\frac{V_{C}(s)-0}{R_1}+\frac{V_{C}(s)-V_{2}(s)}{R_2}+\frac{V_{C}(s)-\frac{4}{3s}}{\frac{1}{sC_0}}=0\\
+\end{align}
+The above equation is same as equation of Fig. in problem 
+		\ref{prob:init}
 
 	\end{enumerate}
  \section{Bilinear Transform}

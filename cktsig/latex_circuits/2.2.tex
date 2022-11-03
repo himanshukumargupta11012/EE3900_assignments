@@ -1,0 +1,10 @@
+		\begin{circuitikz} \draw
+			(.5,3)node[anchor=north east]{P}--(0,3) to[battery1,l_=1V] (0,0)
+			(0,3)--(.5,3)
+			(1,0)--(1,2.5)node[anchor=north west]{Q}
+			(0,0)--(6,0)
+			(1,3)to[R=$1\Omega$](3,3)to[R=$2\Omega$](6,3)
+			(1,3)--(.6,3.4)node[anchor=south west]{S}
+			(6,3) to[battery1,l=2V] (6,0)
+			(3,0) to[C,l_=$\mu F$] (3,3);
+		\end{circuitikz}
