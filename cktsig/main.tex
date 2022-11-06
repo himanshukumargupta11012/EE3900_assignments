@@ -1,4 +1,3 @@
-
 \documentclass[journal,12pt,twocolumn]{IEEEtran}
 %
 \usepackage{setspace}
@@ -107,10 +106,8 @@ columns=fullflexible
 \newcommand{\define}{\stackrel{\triangle}{=}}
 \newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
 \newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
-
 \bibliographystyle{IEEEtran}
 %\bibliographystyle{ieeetr}
-
 \providecommand{\nCr}[2]{\,^{#1}C_{#2}} % nCr
 \providecommand{\nPr}[2]{\,^{#1}P_{#2}} % nPr
 \providecommand{\mbf}{\mathbf}
@@ -130,12 +127,11 @@ columns=fullflexible
 \newcommand{\sgn}{\mathop{\mathrm{sgn}}}
 \providecommand{\abs}[1]{\left\vert#1\right\vert}
 \providecommand{\res}[1]{\Res\displaylimits_{#1}} 
-\providecommand{\norm}[1]{\lVert#1\rVert}
+%\providecomand{\norm}[1]{\lVert#1\rVert}
 \providecommand{\mtx}[1]{\mathbf{#1}}
 \providecommand{\mean}[1]{E\left[ #1 \right]}
 \providecommand{\fourier}{\overset{\mathcal{F}}{ \rightleftharpoons}}
 \providecommand{\ztrans}{\overset{\mathcal{Z}}{ \rightleftharpoons}}
-
 %\providecommand{\hilbert}{\overset{\mathcal{H}}{ \rightleftharpoons}}
 \providecommand{\system}{\overset{\mathcal{H}}{ \longleftrightarrow}}
 	%\newcommand{\solution}[2]{\textbf{Solution:}{#1}}
@@ -148,22 +144,16 @@ columns=fullflexible
 \makeatletter
 \@addtoreset{figure}{problem}
 \makeatother
-
 \let\StandardTheFigure\thefigure
 %\renewcommand{\thefigure}{\theproblem.\arabic{figure}}
 \renewcommand{\thefigure}{\theproblem}
-
-
 %\numberwithin{figure}{subsection}
-
 \def\putbox#1#2#3{\makebox[0in][l]{\makebox[#1][l]{}\raisebox{\baselineskip}[0in][0in]{\raisebox{#2}[0in][0in]{#3}}}}
      \def\rightbox#1{\makebox[0in][r]{#1}}
      \def\centbox#1{\makebox[0in]{#1}}
      \def\topbox#1{\raisebox{-\baselineskip}[0in][0in]{#1}}
      \def\midbox#1{\raisebox{-0.5\baselineskip}[0in][0in]{#1}}
-
 \vspace{3cm}
-
 \title{ 
 %\logo{
 %}
@@ -173,8 +163,6 @@ Circuits and Transforms
 %\title{
 %	\logo{Matrix Analysis through Octave}{\begin{center}\includegraphics[scale=.24]{tlc}\end{center}}{}{HAMDSP}
 %}
-
-
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
 %\title{Matrix Analysis through Octave}
@@ -188,7 +176,6 @@ Circuits and Transforms
 % a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
 % was not built to handle multiple paragraphs
 %
-
 \author{ Himanshu Kumar Gupta%<-this  stops a space
 % <-this % stops a space
 %\thanks{J. Doe and J. Doe are with Anonymous University.}% <-this % stops a space
@@ -211,9 +198,6 @@ Circuits and Transforms
 % you are supposed to have spaces between the names. For what it is worth,
 % this is a minor point as most people would not even notice if the said evil
 % space somehow managed to creep in.
-
-
-
 % The paper headers
 %\markboth{Journal of \LaTeX\ Class Files,~Vol.~6, No.~1, January~2007}%
 %{Shell \MakeLowercase{\textit{et al.}}: Bare Demo of IEEEtran.cls for Journals}
@@ -224,46 +208,28 @@ Circuits and Transforms
 % *** name in the headers of peer review papers.                   ***
 % You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
 % you desire.
-
-
-
-
 % If you want to put a publisher's ID mark on the page you can do it like
 % this:
 %\IEEEpubid{0000--0000/00\$00.00~\copyright~2007 IEEE}
 % Remember, if you use this you must call \IEEEpubidadjcol in the second
 % column for its text to clear the IEEEpubid mark.
-
-
-
 % make the title area
 \maketitle
-
 %\newpage
-
 \tableofcontents
-
 %\renewcommand{\thefigure}{\thesection.\theenumi}
 %\renewcommand{\thetable}{\thesection.\theenumi}
-
 \renewcommand{\thefigure}{\theenumi}
 \renewcommand{\thetable}{\theenumi}
-
 %\renewcommand{\theequation}{\thesection}
-
-
 \bigskip
-
 \begin{abstract}
 This manual provides a simple introduction to Transforms
 \end{abstract}
-
-
 %% Copyright (C) 2020 Saurabh Joshi
 %% 
 %\let\negmedspace\undefined
 %\let\negthickspace\undefined
-
 %\documentclass[journal,12pt,onecolumn]{IEEEtran}
 %%\documentclass[journal,12pt,twocolumn]{IEEEtran}
 %%
@@ -493,7 +459,6 @@ This manual provides a simple introduction to Transforms
 %\draw[line width=0.75mm, yellow1] (0,0) -- (\textwidth,0);
 %\end{tikzpicture}
 %\par\end{center}
-
  \section{Definitions}
 \begin{enumerate}[label=\arabic*.,ref=\thesection.\theenumi]
 \numberwithin{equation}{section}
@@ -514,7 +479,6 @@ u(t) =
 	G(s) = \int_{-\infty}^{\infty} g(t) e^{-st}\, dt
 \end{align}
  \end{enumerate}
-
  \section{Laplace Transform}
 \begin{enumerate}[label=\arabic*.,ref=\thesection.\theenumi]
 \numberwithin{equation}{section}
@@ -528,7 +492,6 @@ u(t) =
 			\label{fig:ckt}
 \end{figure}
 \item Draw the circuit using latex-tikz.
-
 	\solution See fig. \ref{crct:2.2}
 \begin{figure}[!ht]
 	\input{./latex_circuits/2.2.tex}
@@ -536,9 +499,7 @@ u(t) =
 	\caption{Given Circuit}
 	\label{crct:2.2}
 \end{figure}
-
 \item Find $q_1$.
-
 	\solution
 		On connecting S to P for a long time capacitor get fully charged behave like disconnected wire. So, circuit will look like \ref{crct:2.3}
 \begin{figure}[!ht]
@@ -547,14 +508,11 @@ u(t) =
 	\caption{circuit when conected to P for long time}
 	\label{crct:2.3}
 \end{figure}
-
-
 		On applying KVL on circuit in fig. \ref{crct:2.3} we get current as,
 		\begin{align}
 			i=1/3	
 		\end{align}
 in counter-clockwise direction
-
 So, PD across the capacitor i.e. across M and N is given by,
 		\begin{align}
 			v_{C_0}&=1+\frac{1}{3}\times 1\\
@@ -567,7 +525,6 @@ So, PD across the capacitor i.e. across M and N is given by,
 		\end{align}
 			
 	\item Show that the Laplace transform of $u(t)$ is $\frac{1}{s}$ and find the ROC.
-
 		\solution Laplace of u(t) is given by
 		\begin{align}
 			U(t)&=\int_{-\infty}^{\infty} u(t) e^{-st}\, dt\\
@@ -576,14 +533,12 @@ So, PD across the capacitor i.e. across M and N is given by,
 			&=\frac{1}{s}
 		\end{align}
 Since $e^{-st}$ is defined at $t\to \infty$ only for $s>0$
-
 So, ROC will be $s>0$
 	\item Show that 
 		\begin{align}
 			e^{-at}u(t) \system{L} \frac{1}{s+a}, \quad a > 0
 		\end{align}
 		and find the ROC.
-
 		\solution
 		\begin{align}
 			\mathcal{L}\sbrak{e^{-at}u(t)}&=\int_{-\infty}^{\infty} e^{-at}u(t) e^{-st}\, dt\\
@@ -592,11 +547,8 @@ So, ROC will be $s>0$
 			&=\frac{e^{-(s+a)t}}{-(s+a)}\bigg]_0^\infty\\
 			&=\frac{1}{s+a}
 		\end{align}
-
 		Since $e^{-(s+a)t}$ is defined at $t\to \infty$ only for $s>-a$
-
 		So, ROC will be $s>-a$
-
 	\item Now consider the following resistive circuit transformed from 
 			Fig. \ref{fig:ckt}
 		\begin{figure}[!ht]
@@ -614,8 +566,6 @@ So, ROC will be $s>0$
 		Find the voltage across the capacitor $V_{C_0}(s)$.
 		
 		\solution
-
-
 \begin{figure}[!ht]
 	\input{./latex_circuits/2.6.tex}
 	\centering
@@ -623,7 +573,6 @@ So, ROC will be $s>0$
 	\label{crct:2.6}
 \end{figure}
 		from above 2 equations we can conclude that $V_1(s)=\frac{1}{s}$ and $V_2(s)=\frac{2}{s}$
-
 		Now, let voltage at point R is 0. Applying KCL at point S i.e. junction of 3 resistors we get
 		\begin{align}
 			\frac{V_S(s)-0}{1/sC_0}+&\frac{V_S(s)-1/s}{1}+\frac{V_S(s)-2/s}{2}=0\\
@@ -635,7 +584,6 @@ So, ROC will be $s>0$
 			&=\frac{4}{s(3+2s)}
 		\end{align}
 	\item Find $v_{C_0}(t)$.  Plot using python.
-
 		\solution $v_{C_0}(t)$ is given by
 			\begin{align}
 				v_{C_0}(t)&=\mathcal{L}^{-1}\sbrak{V_{C_0}(s)}\\
@@ -644,7 +592,6 @@ So, ROC will be $s>0$
 				&=\frac{4}{3}\brak{1-e^{-\frac{3}{2}}}u(t)
 				\end{align}
 Run below python code to get fig. \ref{fig:v_t_1} which is of $v_{C_0}(t)$
-
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=\columnwidth]{./ques_2/v_t_1.png}
@@ -652,32 +599,26 @@ Run below python code to get fig. \ref{fig:v_t_1} which is of $v_{C_0}(t)$
 \caption{$v_{C_0}(t)$ wrt t}	
 \end{figure}
 	\item Verify your result using ngspice.
-
 		\solution Run the below ngspice code to get data and then use given python file to plot fig. \ref{fig:2.8}
-
 		In fig. \ref{fig:2.8}, we can see that both results are coinciding. So, our answer is correct
 \begin{lstlisting}
 https://github.com/himanshukumargupta11012/EE3900_assignments/blob/main/cktsig/ques_2/2.8.cir
 https://github.com/himanshukumargupta11012/EE3900_assignments/blob/main/cktsig/ques_2/2.8.py
 		\end{lstlisting}
-
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=\columnwidth]{./ques_2/2.8.png}
 	\caption{theoretical v/s analytical}	
 	\label{fig:2.8}
 \end{figure}
-
 	\item Obtain Fig. 
 			\ref{fig:lap-ckt}
 			using the equivalent differential equation.
-
 			\solution Using KCL at the junction of resistors and capacitor, we get
 			\begin{align}
 				\frac{v_{C}(t)-v_1(t)}{R_1}+\frac{v_{C}(t)-v_{2}(t)}{R_2}+\frac{dq(t)}{dt}=0\\
 			\end{align}
 where $q(t)$ is charge on capacitor
-
 Taking laplace both sides, we get
 \begin{align}
 	\frac{V_{C}(s)-0}{R_1}+\frac{V_{C}(s)-V_{2}(s)}{R_2}+sQ(s)-q(0)=0\\
@@ -686,19 +627,14 @@ Taking laplace both sides, we get
 	\frac{V_{C}(s)-0}{R_1}+\frac{V_{C}(s)-V_{2}(s)}{R_2}+\frac{V_{C}(s)}{\frac{1}{sC_0}}=0\\
 \end{align}
 The above equation is same as Fig. \ref{fig:lap-ckt} 
-
 \end{enumerate}
-
  \section{Initial Conditions}
 \begin{enumerate}[label=\arabic*.,ref=\thesection.\theenumi]
-
 \numberwithin{equation}{section}
 \item Find $q_2$ in Fig. 
 			\ref{fig:ckt}.
-
 			\solution
 			Since S is connected to Q for a long time so capacitor get fully charged and behave as a disconnected wire. So, the circuit will look like this
-
 			
 \begin{figure}[!ht]
 	\input{./latex_circuits/3.1.tex}
@@ -711,7 +647,6 @@ The above equation is same as Fig. \ref{fig:lap-ckt}
 			i=\frac{2}{3}A
 		\end{align}
 		in counter-clockwise direction
-
 		So, voltage across capacitor is given by
 		\begin{align}
 			v_{C_0}=\frac{2}{3}\times1=\frac{2}{3}
@@ -721,14 +656,11 @@ The above equation is same as Fig. \ref{fig:lap-ckt}
 			q_2&=V_{C_0}C_0\\
 			&=\frac{2}{3}\mu C
 		\end{align}
-
 \item Draw the equivalent $s$-domain resistive circuit when S is switched to position Q.  Use variables $R_1, R_2, C_0$ for the passive elements.
 Use latex-tikz.
 		\label{prob:init}
-
 		\solution $s$-domain resistive circuit would be similar to previous one except a difference that here we have to add a potential difference of $\frac{4}{3}$ because there is initial charge present in cpacitor.
 		So, the circuit looks like fig. \ref{crct:3.2}
-
 \begin{figure}[!ht]
 	\input{./latex_circuits/3.2.tex}
 	\centering
@@ -736,7 +668,6 @@ Use latex-tikz.
 	\label{crct:3.2}
 \end{figure}
 		\item $V_{C_0}(s)$ = ? 
-
 			\solution In fig. \ref{crct:3.2}, let voltage at point R is 0. Applying KCL at point S i.e. junction of 3 resistors we get
 		\begin{align}
 			\frac{V_S(s)-\frac{4}{3}}{1/sC_0}+&\frac{V_S(s)-0}{1}+\frac{V_S(s)-2/s}{2}=0\\
@@ -747,9 +678,7 @@ Use latex-tikz.
 			V_{C_0}(s)&=V_S-V_R\\
 			&=\frac{\frac{4}{3}s^2+\frac{1}{C_0}}{s(s+\frac{3}{2C_0})}
 		\end{align}
-
 	\item $v_{C_0}(t)$ = ? Plot using python.
-
 		\solution 
  $v_{C_0}(t)$ is given by
 			\begin{align}
@@ -768,27 +697,20 @@ https://github.com/himanshukumargupta11012/EE3900_assignments/blob/main/cktsig/q
 	\caption{$v_{C_0}(t)$ wrt t}	
 	\label{fig:3.4}
 \end{figure}
-
-
 	\item Verify your result using ngspice.
-
 \solution Run the below ngspice code to get data and then use given python file to plot fig. \ref{fig:3.5}
-
 		In fig. \ref{fig:3.5}, we can see that both results are coinciding. So, our answer is correct
 \begin{lstlisting}
 https://github.com/himanshukumargupta11012/EE3900_assignments/blob/main/cktsig/ques_3/3.5.cir
 https://github.com/himanshukumargupta11012/EE3900_assignments/blob/main/cktsig/ques_3/3.5.py
 		\end{lstlisting}
-
 \begin{figure}[!ht]
 \centering
 	\includegraphics[width=\columnwidth]{./ques_3/3.5.png}
 	\caption{theoretical v/s analytical}	
 	\label{fig:3.5}
 \end{figure}
-
 	\item Find $v_{C_0}(0-), v_{C_0}(0+)$ and  $v_{C_0}(\infty) $. 
-
 		\solution 
 		Charge not changes abruptly.So,
 		\begin{align}
@@ -801,17 +723,14 @@ https://github.com/himanshukumargupta11012/EE3900_assignments/blob/main/cktsig/q
 			v_C(\infty)&=\lim_{t\to \infty}\frac{2}{3}\brak{1+e^{-\frac{3\times 10^{6}t}{2}}}u(t)\\
 			&=\frac{2}{3}
 		\end{align}
-
 	\item Obtain the Fig.  in problem 
 		\ref{prob:init}
 			using the equivalent differential equation.
-
 			\solution Using KCL at the junction of resistors and capacitor after joining S to Q in fig. \ref{crct:2.2}, we get
 			\begin{align}
 				\frac{v_{C}(t)-0}{R_1}+\frac{v_{C}(t)-v_{2}(t)}{R_2}+\frac{dq(t)}{dt}=0\\
 			\end{align}
 where $q(t)$ is charge on capacitor
-
 Taking laplace both sides, we get
 \begin{align}
 	\frac{V_{C}(s)-0}{R_1}+\frac{V_{C}(s)-V_{2}(s)}{R_2}+sQ(s)-q(0)=0\\
@@ -821,7 +740,6 @@ Taking laplace both sides, we get
 \end{align}
 The above equation is same as equation of Fig. in problem 
 		\ref{prob:init}
-
 	\end{enumerate}
  \section{Bilinear Transform}
 \begin{enumerate}[label=\arabic*.,ref=\thesection.\theenumi]
@@ -829,15 +747,106 @@ The above equation is same as equation of Fig. in problem
 \item In Fig. 
 			\ref{fig:ckt},
 			consider the case when $S$ is switched to $Q$ right in the beginning. Formulate the differential equation.
-		\item 			Find $H(s)$ considering the ouput voltage at the capacitor.
+
+			\solution 
+			Applyling KCL after switching S to Q, we get differential equation
+		\begin{align}
+			\frac{v_{C_0}(t)-0}{R_1}+\frac{v_{C_0}(t)-v_2(t)}{R_2}+\frac{dq(t)}{dt}=0 \label{eq:4.1}\\
+			\frac{v_{C_0}(t)-0}{R_1}+\frac{v_{C_0}(t)-v_2(t)}{R_2}+C_0\frac{d\cbrak{v_{C_0}(t)}}{dt}=0 \label{eq:4.1.2}
+		\end{align}
+		
+		\item 		Find $H(s)$ considering the ouput voltage at the capacitor.
+
+			\solution
+			Taking laplace of eqn \eqref{eq:4.1}, we get
+			\begin{align}		
+				\frac{V_{C_0}(s)-0}{R_1}+\frac{V_{C_0}(s)-V_2(s)}{R_2}+&sQ(s)-q(0)=0\\
+				\frac{V_{C_0}(s)-0}{R_1}+\frac{V_{C_0}(s)-V_2(s)}{R_2}+&sC_0V_{C_0}(s)=0\\
+				\implies \frac{V_{C_0}(s)}{V_2(s)}=\frac{\frac{1}{R_2}}{\frac{1}{R_1}+\frac{1}{R_2}+sC_0}&\label{eq:4.2}\\
+				\implies H(s)=\frac{\frac{1}{R_2}}{\frac{1}{R_1}+\frac{1}{R_2}+sC_0}\quad &\because H(s)=\frac{O}{I}
+			\end{align}
+Since at starting, capacitor is uncharged so $q(0)=0$ in above equation.
+
+			We know that 
+			\begin{align}
+				H(s)&=\frac{\text{output}}
+{\text{input}}\\
+				&=\frac{V_{C_0}(s)}{V_2(s)}\\
+				&=\frac{\frac{1}{R_2}}{\frac{1}{R_1}+\frac{1}{R_2}+sC_0}\label{eq:4.2.1}\quad \text{from \eqref{eq:4.2}}
+			\end{align}
 		\item Plot $H(s)$.  What kind of filter is it?
+			
+			\solution Run the following code to get fig \ref{fig:4.3}
+			\begin{lstlisting}
+https://github.com/himanshukumargupta11012/EE3900_assignments/blob/main/cktsig/ques_4/4.3.py
+		\end{lstlisting}
+		\begin{figure}
+		\centering
+		\includegraphics[width=\columnwidth]{./ques_4/4.3.png}
+			\caption{$H(s)$ wrt s}	
+		\label{fig:4.3}
+\end{figure}
+		As $\omega$ increases, s increases since $s=j\omega$. And as s increases H(s) decreases as we can see from fig. \ref{fig:4.3} or equation \eqref{eq:4.2.1}.
+
+		So, conclusively as $\omega$ increses, $H(s)$ decreases. As high frequency passes from this it becomes negligible which is equivalent to removing high frequency. Hence, it is low-pass filter.
+
 		\item Using trapezoidal rule for integration, formulate the difference equation
 			by considering 
 		\begin{align}
 			y(n) = y(t)\vert_{t=n}
 		\end{align}
-	\item Find $H(z)$.
-	\item How can you obtain $H(z)$ from $H(s)$?
-	\end{enumerate}
 
+		\solution
+		From equation \eqref{eq:4.1.2}
+		\begin{align}
+\frac{v_{C_0}(t)-0}{R_1}+\frac{v_{C_0}(t)-v_2(t)}{R_2}+C_0\frac{d\cbrak{v_{C_0}(t)}}{dt}=0\\
+\implies \frac{d\cbrak{v_{C_0}(t)}}{dt}=\frac{2u(t)-v_{C_0}(t)}{R_2C_0}-\frac{v_{C_0}(t)}{R_1C_0}
+\\
+			v_{C_0}(t)\bigg]_n^{n+1}=\int_n^{n+1}\brak{\frac{2u(t)-v_{C_0}(t)}{R_2C_0}-\frac{v_{C_0}(t)}{R_1C_0}}dt \label{eq:4.4.1}
+		\end{align}
+		From trapezoidal rule of integration
+		\begin{align}
+			\int_a^b f(x)dx=\brak{b-a}\frac{f(b)-f(a)}{2}
+			\label{eq:trap_rule}
+		\end{align}
+	Using this rule in RHS of equation \eqref{eq:4.4.1}, we get
+	\begin{align}
+		v_{C_0}(n+1)-v_{C_0}(n)&=\frac{u(N+1+u(n)}{R_2C_0}\\
+		&-\brak{\frac{1}{R_1}+\frac{1}{R_2}}\frac{v_{C_0}(n+1)+v_{C_0}(n)}{2C_0}
+	\end{align}
+	Since $v_{C_0}$ is output so $y(n)=v_{C_0}(n)$.
+
+	So, difference equation will be
+	\begin{align}
+		&y(n+1)\brak{1+\frac{1}{2R_1C_0}+\frac{1}{2R_2C_0}}=\\
+		&y(n)\brak{1-\frac{1}{2R_1C_0}-\frac{1}{2R_2C_0}}+\frac{u(n+1)+u(n)}{R_2C_0}
+\end{align}
+	\item Find $H(z)$.
+
+		\solution
+		Taking z-transform of difference equation we get,
+		\begin{align}
+			&zY(z)\brak{1+\frac{1}{2R_1C_0}+\frac{1}{2R_2C_0}}\\
+			&=Y(z)\brak{1-\frac{1}{2R_1C_0}-\frac{1}{2R_2C_0}}+U(z)\frac{z+1}{R_2C_0}\\
+			&\implies Y(z)\brak{z+\frac{z}{2R_1C_0}+\frac{z}{2R_2C_0}-1+\frac{1}{2R_1C_0}+\frac{1}{2R_2C_0}}\\
+			&\quad \quad	=U(z)\frac{z+1}{R_2C_0}\\
+			&\implies \frac{Y(z)}{2U(z)}=\frac{\frac{z+1}{2R_2C_0}}{\brak{z\brak{1+\frac{1}{2R_1C_0}+\frac{1}{2R_2C_0}}-1+\frac{1}{2R_1C_0}+\frac{1}{2R_2C_0}}}\\
+			&\implies H(z)=\frac{\frac{z+1}{2R_2C_0}}{\brak{z\brak{1+\frac{1}{2R_1C_0}+\frac{1}{2R_2C_0}}-1+\frac{1}{2R_1C_0}+\frac{1}{2R_2C_0}}}\\
+			&\quad \because H(s)=\frac{O}{I}
+		\end{align}
+	\item How can you obtain $H(z)$ from $H(s)$?
+		
+		\solution The z-transfrom can be obtained from laplace by substituting
+		\begin{align}
+			s=\frac{2}{L}\frac{1-z^{-1}}{1+z^{-1}}
+		\end{align}
+		where T is sampling time period or in simple words length of interval taken in trapezoidal equation. In our case $T=(n+1)-n=1$
+
+		Putting this in equation \eqref{eq:4.2.1}, we get
+		\begin{align}
+			H(z)&=\frac{\frac{1}{R_2}}{\frac{1}{R_1}+\frac{1}{R_2}+2\frac{1-z^{-1}}{1+z^{-1}}C_0}\\
+			&=\frac{\frac{z+1}{2R_2C_0}}{\brak{z\brak{1+\frac{1}{2R_1C_0}+\frac{1}{2R_2C_0}}-1+\frac{1}{2R_1C_0}+\frac{1}{2R_2C_0}}}
+		\end{align}
+	\end{enumerate}
 \end{document}
+

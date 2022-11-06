@@ -20,6 +20,4 @@ plt.plot(time,v_anal,'o',label='analytical')
 plt.legend()
 plt.grid()
 plt.savefig('./2.8.png')
-plt.show()
-
 
