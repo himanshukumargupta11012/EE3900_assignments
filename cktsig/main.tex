@@ -847,6 +847,68 @@ https://github.com/himanshukumargupta11012/EE3900_assignments/blob/main/cktsig/q
 			H(z)&=\frac{\frac{1}{R_2}}{\frac{1}{R_1}+\frac{1}{R_2}+2\frac{1-z^{-1}}{1+z^{-1}}C_0}\\
 			&=\frac{\frac{z+1}{2R_2C_0}}{\brak{z\brak{1+\frac{1}{2R_1C_0}+\frac{1}{2R_2C_0}}-1+\frac{1}{2R_1C_0}+\frac{1}{2R_2C_0}}}
 		\end{align}
+
+
+\item Find $y(n)$ from $H(z)$ and verify whether $y(n) = y(t)\vert_{t = n}$.\\
+	 \solution 
+	 \begin{align}
+		 &Y(z) = H(z)X(z) \\
+		      &= \frac{2.5 \times 10^5\brak{1 + z^{-1}}}{z^{-1}\brak{7.5 \times10^5 -1} + 7.5\times 10^5 + 1}\frac{2}{1 - z^{-1}} \\
+		      &= \frac{2}{3}\sbrak{\frac{1}{1-z^{-1}} - \frac{2}{3} \frac{1}{\brak{7.5 \times 10^5 - 1}z^{-1} + \brak{7.5 \times 10^5 +1}}}
+	 \end{align}
+	 Now if we apply inverse z-transform by taking ROC $\abs{z} > 1$,
+	  \begin{align}
+		  y(n) &= \frac{2}{3}u(n) - \frac{2}{3}\brak{-\frac{7.5 \times 10^5 -1}{7.5 \times 10^5 + 1}}^nu(n)
+	  \end{align}
+	  Here we used the following properties of z-transform,
+	   \begin{align}
+		   u(n) \ztrans \frac{1}{1-z^{-1}} , \abs{z} > 1\\
+		   a^{n}u(n) \ztrans \frac{1}{1 - az^{-1}} ,\abs{z} >\abs{a}
+	   \end{align}
+	   Here we are sampling the signal at high frequency means at small intervals of time let say for $n = 0.5 \times 10^{-5} , 1 \times 10^{-5} \cdots$,for that we can approximate $y(n)$ as,
+	    \begin{align}
+		    y(n) \approx \frac{2}{3}\brak{ 1 - \frac{1 - 7.5 \times 10^5n}{1 + 7.5\times 10^5n}}u(n)
+	    \end{align}
+            Now we will verify it from $y(t)$, for that consider
+	     \begin{align}
+		     Y(s) &= H(s)X(s) \\
+			  &=\frac{5 \times 10^5}{s + 1.5 \times 10^6}\frac{2}{s} \\
+			  &= \frac{2}{3}\brak{\frac{1}{s} - \frac{1}{s + 1.5 \times 10^6}}
+	     \end{align}
+	     Now we will apply inverse laplace transform with ROC being $\mathcal{R}\cbrak{s} > 0$ on b.s,
+	      \begin{align}
+	           y(t) &= \frac{2}{3}\brak{1 - e^{-1.5\times 10^6t}}u(t)
+              \end{align}
+               Now 
+	        \begin{align}
+			e^{-1.5 \times 10^6t} &= \frac{e^{-7.5 \times 10^5t}}{e^{7.5 \times 10^5t}} \\
+			&\approx \frac{1 - 7.5\times10^5t}{1 + 7.5\times10^5t} , \text{when}\, t << 10^{-6}
+		\end{align}
+	Using that,
+	     \begin{align}
+		     y(t) &= \frac{2}{3}\brak{1 - \frac{1 - 7.5\times10^5t}{1 + 7.5\times10^5t}}u(t)
+	     \end{align}
+	     And 
+	      \begin{align}
+		      y(t)\vert_{t = n} &= \frac{2}{3}\brak{1 - \frac{1 - 7.5\times10^5n}{1 + 7.5\times10^5n}}u(n)
+              \end{align}
+          As you can see both are turn to be the same.\\
+	  Download the following codes for the simulation and plot \ref{fig:y_m} 
+	   \begin{lstlisting}
+wget https://github.com/himanshukumargupta11012/EE3900_assignments/blob/main/cktsig/ques_4/4.7.py
+wget  https://github.com/himanshukumargupta11012/EE3900_assignments/blob/main/cktsig/ques_4/4.7.cir
+           \end{lstlisting}
+	   Then run the following command,
+	\begin{lstlisting}
+ngspice 4.7.cir
+python3 4.7.py
+        \end{lstlisting}
+        \begin{figure}[!ht]
+		\centering
+		\includegraphics[width = \columnwidth]{./ques_4/4.7.png}
+		\label{fig:y_m}
+		\caption{Output of the filter vs time}		
+        \end{figure}
 	\end{enumerate}
 \end{document}
 
